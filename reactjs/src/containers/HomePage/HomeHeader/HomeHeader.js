@@ -1,61 +1,102 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./HomeHeader.scss";
-import flag from "../../../assets/vi.png";
+import { FormattedMessage } from "react-intl";
+import { languages } from "../../../utils";
+import { changeLanguageApp } from "../../../store/actions";
 class HomeHeader extends Component {
+  changeLanguage = (language) => {
+    this.props.changeLanguageAppRedux(language);
+  };
   render() {
+    console.log(this.props);
+    let language = this.props.language;
+
     return (
       <React.Fragment>
         <div className="homeHeader-container">
           <div className="homeHeader-content">
             <div className="left-content py-2">
-              <i class="fas fa-bars"></i>
+              <i className="fas fa-bars"></i>
               <div className="header-logo "></div>
             </div>
             <div className="center-content">
               <div className="child-content">
                 <div>
-                  <b>Chuyên khoa</b>
+                  <b>
+                    <FormattedMessage id="homeHeader.speciality" />
+                  </b>
                 </div>
-                <div className="subs-title">Tìm bác sĩ theo chuyên khoa</div>
+                <div className="subs-title">
+                  <FormattedMessage id="homeHeader.search-doctor" />
+                </div>
               </div>
               <div className="child-content">
                 <div>
-                  <b>Cơ sở y tế</b>
+                  <b>
+                    <FormattedMessage id="homeHeader.heatlh-facility" />
+                  </b>
                 </div>
-                <div className="subs-title">Chọn bệnh viện phòng khám</div>
+                <div className="subs-title">
+                  <FormattedMessage id="homeHeader.select-room" />
+                </div>
               </div>
               <div className="child-content">
                 <div>
-                  <b>Bác sĩ</b>
+                  <b>
+                    <FormattedMessage id="homeHeader.doctor" />
+                  </b>
                 </div>
-                <div className="subs-title">Chọn bác sĩ giỏi</div>
+                <div className="subs-title">
+                  <FormattedMessage id="homeHeader.select-doctor" />
+                </div>
               </div>
               <div className="child-content">
                 <div>
-                  <b>Gói khám</b>
+                  <b>
+                    <FormattedMessage id="homeHeader.package" />
+                  </b>
                 </div>
-                <div className="subs-title">Khám sức khỏe tổng quát</div>
+                <div className="subs-title">
+                  <FormattedMessage id="homeHeader.health-care" />
+                </div>
               </div>
             </div>
             <div className="right-content">
-              <div className="flag">
-                <select className="form-select" aria-label="Default select example">
-                  <option selected>Việt Nam</option>
-                  <option value="1">English</option>
-                </select>
-                
-              </div>
               <div className="search">
                 <input type="text" placeholder="Search..." />
                 <button className="btn btn-outline-secondary" type="button">
                   <i className="fas fa-search "></i>
                 </button>
               </div>
+              <div className="language">
+                <div
+                  className={
+                    language === languages.VI
+                      ? "language-vn active"
+                      : "language-vn"
+                  }
+                >
+                  <span onClick={() => this.changeLanguage(languages.VI)}>
+                    VN{" "}
+                  </span>
+                </div>
+                <div
+                  className={
+                    language === languages.EN
+                      ? "language-en active"
+                      : "language-en"
+                  }
+                >
+                  <span onClick={() => this.changeLanguage(languages.EN)}>
+                    EN{" "}
+                  </span>
+                </div>
+              </div>
               <div className="support">
                 <div className="support-item">
-                  <i class="fas fa-question-circle">
-                    <span>Hỗ trợ</span>
+                  <i className="fas fa-question-circle mr-3">
+                    <FormattedMessage id="homeHeader.support" />
                   </i>
                   <div className="support-title">0329399087</div>
                 </div>
@@ -65,8 +106,12 @@ class HomeHeader extends Component {
         </div>
         <div className="homeHeader-banner">
           <div className="content-top">
-            <div className="banner-content1">NỀN TẢNG Y TẾ</div>
-            <div className="banner-content2">CHĂM SÓC SỨC KHỎE TOÀN DIỆN</div>
+            <div className="banner-content1">
+              <FormattedMessage id="banner.title1" />
+            </div>
+            <div className="banner-content2">
+              <FormattedMessage id="banner.title2" />
+            </div>
           </div>
           <div className="content-bot">
             <div className="option">
@@ -74,7 +119,9 @@ class HomeHeader extends Component {
                 <div className="option-item">
                   <div className="option-item-img1"></div>
                 </div>
-                <div className="option-title">Khám Chuyên khoa</div>
+                <div className="option-title">
+                  <FormattedMessage id="banner.option1" />
+                </div>
               </div>
             </div>
             <div className="option">
@@ -82,7 +129,10 @@ class HomeHeader extends Component {
                 <div className="option-item">
                   <div className="option-item-img2"></div>
                 </div>
-                <div className="option-title">Khám từ xa</div>
+
+                <div className="option-title">
+                  <FormattedMessage id="banner.option2" />
+                </div>
               </div>
             </div>
             <div className="option">
@@ -90,7 +140,10 @@ class HomeHeader extends Component {
                 <div className="option-item">
                   <div className="option-item-img3"></div>
                 </div>
-                <div className="option-title">Khám tổng quát</div>
+
+                <div className="option-title">
+                  <FormattedMessage id="banner.option3" />
+                </div>
               </div>
             </div>
             <div className="option">
@@ -98,7 +151,10 @@ class HomeHeader extends Component {
                 <div className="option-item">
                   <div className="option-item-img4"></div>
                 </div>
-                <div className="option-title">Xét nghiệm y học</div>
+
+                <div className="option-title">
+                  <FormattedMessage id="banner.option4" />
+                </div>
               </div>
             </div>
             <div className="option">
@@ -106,7 +162,10 @@ class HomeHeader extends Component {
                 <div className="option-item">
                   <div className="option-item-img5"></div>
                 </div>
-                <div className="option-title">Sức khỏe tinh thần</div>
+
+                <div className="option-title">
+                  <FormattedMessage id="banner.option5" />
+                </div>
               </div>
             </div>
             <div className="option">
@@ -114,7 +173,10 @@ class HomeHeader extends Component {
                 <div className="option-item">
                   <div className="option-item-img6"></div>
                 </div>
-                <div className="option-title">Khám nha khoa</div>
+
+                <div className="option-title">
+                  <FormattedMessage id="banner.option6" />
+                </div>
               </div>
             </div>
           </div>
@@ -127,11 +189,14 @@ class HomeHeader extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
+    language: state.app.language,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);

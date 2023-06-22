@@ -1,8 +1,12 @@
 .homeHeader-container {
   height: 70px;
   width: 100%;
+  position: sticky;
+  top: 0;
   padding: 0 20px;
   background-color: #42a9cb;
+  z-index: 1000;
+
   .homeHeader-content {
     width: 100%;
     height: 100%;
@@ -50,24 +54,39 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .flag {
-        background: url("../../../assets/vi.png") center center no-repeat;
+      .language {
         background-size: contain;
         border: 1px solid #fff;
-        margin-left: 50px;
         display: flex;
         align-items: center;
 
-        .form-select {
-          width: 10px;
-          border: none;
-          outline: none;
-
-          height: 15px;
-          margin-left: 10px;
-          font-size: 15px;
+        .language-vn {
+          font-size: 12px;
           font-weight: 400;
-          color: #000000;
+          color: #fff;
+          padding: 5px;
+          cursor: pointer;
+          border: 1px solid #fff;
+          &:hover {
+            color: #ffe100;
+          }
+          &.active {
+            color: #ffe100;
+          }
+        }
+        .language-en {
+          font-size: 12px;
+          font-weight: 400;
+          color: #fff;
+          padding: 5px;
+          border: 1px solid #fff;
+          &:hover {
+            color: #ffe100;
+          }
+          &.active {
+            color: #ffe100;
+          }
+          cursor: pointer;
         }
       }
 
@@ -94,8 +113,9 @@
         border-radius: 25px;
         background-color: #fff;
         font-family: SVN-poppins;
-        font-size: 14px;
+        font-size: 16px;
         color: #000;
+        width: 250px;
         &::placeholder {
           color: #000;
         }
@@ -124,21 +144,22 @@
     margin-bottom: 100px;
     height: 50%;
     .banner-content1 {
-      margin-top: 50px;
-      color: #ffffff;
+      margin-top: 100px; /* Tăng khoảng cách giữa banner và header */
+      color: #da641e;
       font-family: SVN-poppins;
-      font-size: 40px;
-      font-weight: 500;
+      font-size: 48px; /* Tăng kích thước font chữ */
+      font-weight: 700; /* Tăng độ đậm của font chữ */
       text-align: center;
-      text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+      text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3); /* Tăng hiệu ứng bóng đổ */
     }
+
     .banner-content2 {
-      font-size: 40px;
-      font-weight: 700;
-      font-family: SVN-poppins;
-      color: #ffffff;
-      text-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+      font-size: 36px; /* Giảm kích thước font chữ */
+      font-weight: 500; /* Giảm độ đậm của font chữ */
+      color: #0d9a10;
+      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); /* Tăng hiệu ứng bóng đổ nhẹ */
       text-align: center;
+      
     }
   }
   .content-bot {

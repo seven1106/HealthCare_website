@@ -10,6 +10,8 @@ import {
 } from "../../services/userService";
 import ModalUser from "./ModalUser";
 import ModalDeleteUser from "./ModalDeleteUser";
+
+import CustomScrollbars from "../../components/CustomScrollbars";
 class UserManage extends Component {
   constructor(props) {
     super(props);
@@ -98,80 +100,85 @@ class UserManage extends Component {
     console.log("check", this.state);
     let listUsers = this.state.listUsers;
     return (
-      <div className="user-container">
-        <ModalUser
-          isOpen={this.state.isOpenModal}
-          toggleModal={this.toggleModal}
-          createNewUser={this.createNewUser}
-        />
-        <ModalDeleteUser
-          isOpen={this.state.isOpenModalDelete}
-          userId={this.state.userId}
-          toggleModal={this.toggleModalDelete}
-          deleteUser={this.deleteUser}
-        />
-        <div className="title text-center">Manage users</div>
-        <div className="search-box px-2">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search user by email, first name, last name"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-            />
-            <div className="input-group-append">
-              <button className="btn btn-outline-secondary px-3" type="button">
-                <i className="fas fa-search"></i>
-              </button>
+      <CustomScrollbars style={{ height: "100vh", wight: "100%" }}>
+        <div className="user-container">
+          <ModalUser
+            isOpen={this.state.isOpenModal}
+            toggleModal={this.toggleModal}
+            createNewUser={this.createNewUser}
+          />
+          <ModalDeleteUser
+            isOpen={this.state.isOpenModalDelete}
+            userId={this.state.userId}
+            toggleModal={this.toggleModalDelete}
+            deleteUser={this.deleteUser}
+          />
+          <div className="title text-center">Manage users</div>
+          <div className="search-box px-2">
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search user by email, first name, last name"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+              />
+              <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary px-3"
+                  type="button"
+                >
+                  <i className="fas fa-search"></i>
+                </button>
+              </div>
             </div>
           </div>
+          <div className="add-new">
+            <button
+              className="btn btn-primary px-3"
+              onClick={() => this.handleAddNewUser()}
+            >
+              <i className="fas fa-plus ">
+                <span> Add new user</span>
+              </i>
+            </button>
+          </div>
+          <div className="user-list mt-3 mx-2">
+            <table id="customers">
+              <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+              {listUsers &&
+                listUsers.map((item, index) => {
+                  console.log(item);
+                  return (
+                    <tr>
+                      <td>{item.email}</td>
+                      <td>{item.firstName}</td>
+                      <td>{item.lastName}</td>
+                      <td>{item.address}</td>
+                      <td className="btn">
+                        <button className="btn-edit">
+                          <i className="fas fa-pencil-alt"></i>
+                        </button>
+                        <button
+                          className="btn-del"
+                          onClick={() => this.handleDeleteUser(item.id)}
+                        >
+                          <i className="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </table>
+          </div>
         </div>
-        <div className="add-new">
-          <button
-            className="btn btn-primary px-3"
-            onClick={() => this.handleAddNewUser()}
-          >
-            <i className="fas fa-plus ">
-              <span> Add new user</span>
-            </i>
-          </button>
-        </div>
-        <div className="user-list mt-3 mx-2">
-          <table id="customers">
-            <tr>
-              <th>Email</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Address</th>
-              <th>Action</th>
-            </tr>
-            {listUsers &&
-              listUsers.map((item, index) => {
-                console.log(item);
-                return (
-                  <tr>
-                    <td>{item.email}</td>
-                    <td>{item.firstName}</td>
-                    <td>{item.lastName}</td>
-                    <td>{item.address}</td>
-                    <td className="btn">
-                      <button className="btn-edit">
-                        <i className="fas fa-pencil-alt"></i>
-                      </button>
-                      <button
-                        className="btn-del"
-                        onClick={() => this.handleDeleteUser(item.id)}
-                      >
-                        <i className="fas fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-          </table>
-        </div>
-      </div>
+      </CustomScrollbars>
     );
   }
 }
