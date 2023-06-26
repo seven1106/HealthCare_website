@@ -143,7 +143,7 @@ class UserManage extends Component {
               </i>
             </button>
           </div>
-          <div className="user-list mt-3 mx-2">
+          <div className="user-list">
             <table id="customers">
               <tr>
                 <th>Email</th>

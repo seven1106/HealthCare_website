@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { languages } from "../../../utils";
 import { changeLanguageApp } from "../../../store/actions";
-
+import fb from "../../../assets/slick-img/facebook-footer.svg";
 class Homefooter extends Component {
   changeLanguage = (language) => {
     this.props.changeLanguageAppRedux(language);
@@ -19,7 +19,7 @@ class Homefooter extends Component {
               href="https://www.facebook.com/sevennguyen.1106/"
               rel="noreferrer"
             >
-              More information please contact
+              <img src={fb} alt="fb" />
             </a>
           </p>
         </div>

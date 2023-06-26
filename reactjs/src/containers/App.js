@@ -48,7 +48,6 @@ class App extends Component {
         <Router history={history}>
           <div className="main-container">
             {/* <ConfirmModal /> */}
-            {this.props.isLoggedIn && <Header />}
 
             <div className="content-container">
               <CustomScrollbars style={{ height: '100vh', wight:'100%'}}>
