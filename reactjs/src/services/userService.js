@@ -18,12 +18,23 @@ const editUserApi = (data) => {
 const deleteUserApi = (userId) => {
   return axios.delete(`/api/delete-user?id=${userId}`);
 };
-
+const getTopDoctorHomeApi = (limitInput) => {
+  return axios.get(`/api/get-top-doctor-home?limit=${limitInput}`);
+};
+const getAllDoctorsApi = () => {
+  return axios.get(`/api/get-all-doctors`);
+};
+const saveDetailInforDoctorApi = (data) => {
+  return axios.post(`/api/save-info-doctor`, data);
+};
 export {
   handleLoginApi,
   getAllUserApi,
-  createNewUserApi,
+  createNewUserApi, 
   editUserApi,
   deleteUserApi,
   getAllCodeApi,
+  getTopDoctorHomeApi,
+  getAllDoctorsApi,
+  saveDetailInforDoctorApi,  
 };

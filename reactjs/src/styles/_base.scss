@@ -10,21 +10,46 @@
     height: 100vh;
     overflow: hidden;
 }
-
 .btn {
-    padding: 0;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    height: 30px;
-    line-height: 30px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    i {
-      font-size: $base-size - 3px;
-    }
+  position: relative;
+  background-color: $colormain;
+  color: $common-text-color;
+  border-radius: 5px;
+  box-shadow: rgb(18, 97, 121) 0px 4px 0px 0px;
+  padding: 0px;
+
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  height: 30px;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  transition: all .3s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
 }
+
+.btn::before {
+  content: "";
+  background-color: rgb(36, 168, 144);
+  width: 0;
+  height: 100%;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 700ms ease-in-out;
+  display: inline-block;
+  i {
+    font-size: $base-size - 3px;
+  }
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
 
 .btn-edit, 
 .btn-add,

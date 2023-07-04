@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
   padding: 0 20px;
-  background-color: #42a9cb;
+  background-color: #45b65a;
   z-index: 1000;
 
   .homeHeader-content {
@@ -13,12 +13,14 @@
     display: flex;
 
     .left-content {
-      width: 15%;
+      width: 14%;
       display: flex;
       align-items: center;
+      margin-top: 10px;
       i {
         font-size: 25px;
         color: #ffffff;
+        margin-right: 10px;
         cursor: pointer;
         &:hover {
           color: #ffe100;
@@ -27,12 +29,12 @@
       .header-logo {
         background: url("../../../assets/logo-01.png") center center no-repeat;
         background-size: contain;
-        height: 100%;
-        width: 100%;
+        height: 120%;
+        width: 120%;
       }
     }
     .center-content {
-      width: 50%;
+      width: 52%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -156,10 +158,9 @@
     .banner-content2 {
       font-size: 36px; /* Giảm kích thước font chữ */
       font-weight: 500; /* Giảm độ đậm của font chữ */
-      color: #0d9a10;
+      color: #45b65a;
       text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); /* Tăng hiệu ứng bóng đổ nhẹ */
       text-align: center;
-      
     }
   }
   .content-bot {

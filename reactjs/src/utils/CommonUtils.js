@@ -1,7 +1,11 @@
 class CommonUtils {
-    static isNumber1 (number) {
-        if (number === 1) return true;
-        return false;
+    static getBase64Image(img) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(img);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
     }
 }
 

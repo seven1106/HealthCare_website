@@ -34,6 +34,12 @@ let handleGetUser = async (req, res) => {
   });
 };
 let handleCreateNewUser = async (req, res) => {
+  if (!req.body.email && !req.body.password) {
+    return res
+      .status(400)
+      .json({ errCode: 1, message: "Email and password is required" });
+  }
+
   let message = await userService.createNewUser(req.body);
   console.log(message);
   return res.status(200).json(message);

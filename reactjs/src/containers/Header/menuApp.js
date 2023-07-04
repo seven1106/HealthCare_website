@@ -12,7 +12,9 @@ export const adminMenu = [
       },
       {
         name: "Doctor",
-        link: "/system/doctor",
+        subMenus: [
+          { name: "Doctor manage", link: "/system/doctor-manage" },
+        ],
       },
       {
         name: "menu.system.system-parameter.header",

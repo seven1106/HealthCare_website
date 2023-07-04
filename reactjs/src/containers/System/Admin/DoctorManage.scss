@@ -1,0 +1,11 @@
+.selectDoctor{
+    display: flex;
+    gap: 10px;
+    padding-bottom: 15px;
+    .selectDoctor-left{
+        width: 30%;
+    }
+    .selectDoctor-right{
+        width: 70%;
+    }
+}

@@ -107,9 +107,12 @@ let createNewUser = (user) => {
         firstName: user.firstName,
         lastName: user.lastName,
         address: user.address,
-        gender: user.gender === "1" ? true : false,
+        gender: user.gender,
         phoneNumber: user.phoneNumber,
         roleId: user.roleId,
+        position: user.position,
+        image: user.avatar,
+
       });
       resolve({
         errCode: 0,
@@ -138,6 +141,10 @@ let updateUserData = (data) => {
         user.lastName = data.lastName;
         user.address = data.address;
         user.phoneNumber = data.phoneNumber;
+        user.roleId = data.roleId;
+        user.position = data.position;
+        user.gender = data.gender;
+        user.image = data.avatar;
 
         await user.save();
         resolve({
@@ -203,7 +210,6 @@ let getAllCodeService = (typeInput) => {
     }
   });
 };
-
 
 module.exports = {
   handleUserLogin: handleUserLogin,
