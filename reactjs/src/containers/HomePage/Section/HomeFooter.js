@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { languages } from "../../../utils";
 import { changeLanguageApp } from "../../../store/actions";
 import fb from "../../../assets/slick-img/facebook-footer.svg";
-class Homefooter extends Component {
+class HomeFooter extends Component {
   changeLanguage = (language) => {
     this.props.changeLanguageAppRedux(language);
   };
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Homefooter);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeFooter);

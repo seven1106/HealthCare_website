@@ -17,7 +17,9 @@ class Facility extends Component {
         <div className="section-container">
           <div className="section-header">
             <span className="section-title">Cơ sở y tế nổi bật</span>
-            <button className="section-button">Xem thêm</button>
+            <button className="section-button">
+              <FormattedMessage id="homepage.see-more" />
+            </button>
           </div>
           <div className="section-body">
             <Slider {...this.props.settings}>

@@ -10,7 +10,7 @@ import Facility from "./Section/Facility";
 import OutstandDoctor from "./Section/OutstandDoctor";
 import HandBook from "./Section/HandBook";
 import About from "./Section/About";
-import Homefooter from "./Section/HomeFooter";
+import HomeFooter from "./Section/HomeFooter";
 import "./HomePage.scss";
 
 class HomePage extends Component {
@@ -27,13 +27,13 @@ class HomePage extends Component {
     };
     return (
       <div className="home-page-container">
-        <HomeHeader />
+        <HomeHeader isShowBanner={true} />
         <Specialty settings={settings} />
         <Facility settings={settings} />
         <OutstandDoctor settings={settings} />
         <HandBook settings={settings} />
         <About />
-        <Homefooter />
+        <HomeFooter />
       </div>
     );
   }

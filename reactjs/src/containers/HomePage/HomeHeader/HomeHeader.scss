@@ -27,10 +27,16 @@
         }
       }
       .header-logo {
+        cursor: pointer;
         background: url("../../../assets/logo-01.png") center center no-repeat;
         background-size: contain;
         height: 120%;
         width: 120%;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(0.9);
+        }
       }
     }
     .center-content {

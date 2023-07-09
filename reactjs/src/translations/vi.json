@@ -1,4 +1,8 @@
 {
+  "homepage": {
+    "top-doctor": "Bác sĩ nổi bật tuần qua",
+    "see-more": "XEM THÊM"
+  },
   "homeHeader": {
     "speciality": "Chuyên khoa",
     "search-doctor": "Tìm bác sĩ theo chuyên khoa",

@@ -1,4 +1,8 @@
 {
+  "homepage": {
+    "top-doctor": "Outstanding doctors in Last week",
+    "see-more": "See more"
+  },
   "homeHeader": {
     "speciality": "Speciality",
     "search-doctor": "Find a doctor by specialty",
@@ -11,7 +15,7 @@
     "support": "Support"
   },
   "banner": {
-    "title1": "MEDICAL BACKGROUND",
+    "title1": "MEDICAL PLATFORM",
     "title2": "COMPREHENSIVE HEALTH CARE",
     "option1": "Specialist Examination",
     "option2": "Remote examination",
@@ -59,6 +63,7 @@
       }
     }
   },
+
   "system": {
     "user-manage": {
       "fail-to-load-fouser": "Fail to load system users list",

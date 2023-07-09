@@ -13,40 +13,41 @@ class Specialty extends Component {
   };
   render() {
     return (
-    <div className="section-share specialty">
-      <div className="section-container">
+      <div className="section-share specialty">
+        <div className="section-container">
           <div className="section-header">
             <span className="section-title">Chuyên khoa phổ biến</span>
-            <button className="section-button">Xem thêm</button>
+            <button className="section-button">
+              <FormattedMessage id="homepage.see-more" />
+            </button>
           </div>
           <div className="section-body">
-          <Slider {...this.props.settings}>
-            <div className="section-item">
-              <div className="bg-image specialty"/>
+            <Slider {...this.props.settings}>
+              <div className="section-item">
+                <div className="bg-image specialty" />
                 <div className="item-title">Co xung khop</div>
-            </div>
-            <div className="section-item">
-              <div className="bg-image specialty"/>
+              </div>
+              <div className="section-item">
+                <div className="bg-image specialty" />
                 <div className="item-title">Co xung khop</div>
-            </div>
-            <div className="section-item">
-              <div className="bg-image specialty"/>
+              </div>
+              <div className="section-item">
+                <div className="bg-image specialty" />
                 <div className="item-title">Co xung khop</div>
-            </div>
-            <div className="section-item">
-              <div className="bg-image specialty"/>
+              </div>
+              <div className="section-item">
+                <div className="bg-image specialty" />
                 <div className="item-title">Co xung khop</div>
-            </div>
-            <div className="section-item">
-              <div className="bg-image specialty"/>
+              </div>
+              <div className="section-item">
+                <div className="bg-image specialty" />
                 <div className="item-title">Co xung khop</div>
-            </div>
-            <div className="section-item">
-              <div className="bg-image specialty"/>
+              </div>
+              <div className="section-item">
+                <div className="bg-image specialty" />
                 <div className="item-title">Co xung khop</div>
-            </div>
-            
-          </Slider>
+              </div>
+            </Slider>
           </div>
         </div>
       </div>

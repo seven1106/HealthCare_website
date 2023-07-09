@@ -5,6 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { languages } from "../../../utils";
 import { changeLanguageApp } from "../../../store/actions";
 import * as actions from "../../../store/actions";
+import { withRouter } from "react-router-dom/cjs/react-router-dom";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -30,17 +31,24 @@ class OutstandDoctor extends Component {
   changeLanguage = (language) => {
     this.props.changeLanguageAppRedux(language);
   };
+  handleViewDetailDoctor = (item) => {
+    this.props.history.push(`/detail-doctor/${item.id}`);
+  };
+
   render() {
     let arrDoctor = this.state.arrDoctor;
     let { language } = this.props;
-    // arrDoctor = arrDoctor.concat(arrDoctor).concat(arrDoctor);
     console.log(arrDoctor);
     return (
       <div className="section-share outstandDoctor">
         <div className="section-container">
           <div className="section-header">
-            <span className="section-title">Bác sĩ nổi bật tuần qua</span>
-            <button className="section-button">Xem thêm</button>
+            <span className="section-title">
+              <FormattedMessage id="homepage.top-doctor" />
+            </span>
+            <button className="section-button">
+              <FormattedMessage id="homepage.see-more" />
+            </button>
           </div>
           <div className="section-body">
             <Slider {...this.props.settings}>
@@ -55,7 +63,11 @@ class OutstandDoctor extends Component {
                   let vi = `${item.positionData.value_vi} ${item.firstName} ${item.lastName}`;
                   let en = `${item.positionData.value_en} ${item.firstName} ${item.lastName}`;
                   return (
-                    <div className="section-item" key={index}>
+                    <div
+                      className="section-item"
+                      key={index}
+                      onClick={() => this.handleViewDetailDoctor(item)}
+                    >
                       <div className="outstandDoctor-border">
                         <div className="outstandDoctor-img">
                           <div
@@ -99,4 +111,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandDoctor);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(OutstandDoctor)
+);

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import { KeyCodeUtils } from "../../utils";
 
 import * as actions from "../../store/actions";
 import "./Login.scss";
@@ -32,14 +33,35 @@ class Login extends Component {
       }
       if (data && data.errCode === 0) {
         this.props.userLoginSuccess(data.user);
-        this.props.navigate("/system/user-manage");
+        if (data.user.roleId === "R1")
+          this.props.navigate("/system/user-redux");
+        if (data.user.roleId === "R2")
+          this.props.navigate("/doctor/schedule-manage");
       }
     } catch (error) {
       console.log(error);
       this.setState({ errMessage: error.response.data.message });
     }
   };
+  handlerKeyDown = (event) => {
+    const keyCode = event.which || event.keyCode;
+    if (keyCode === KeyCodeUtils.ENTER) {
+      event.preventDefault();
+      this.handleLogin();
+    }
+  };
 
+  componentDidMount() {
+    document.addEventListener("keydown", this.handlerKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handlerKeyDown);
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
   render() {
     return (
       <div className="login-background">

@@ -6,12 +6,14 @@ const initialState = {
   isLoadingUser: [],
   isLoadingDoctor: [],
   isLoadingDrs: [],
+
   genders: [],
   roles: [],
   positions: [],
   users: [],
   doctors: [],
   allDoctors: [],
+  allScheduleTime: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -115,6 +117,16 @@ const adminReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ALL_DOCTOR_FAIL:
       state.isLoadingDrs = false;
       state.allDoctors = [];
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_SCHEDULE_SUCCESS:
+      state.allScheduleTime = action.allScheduleTime;
+      return {
+        ...state,
+      };
+    case actionTypes.FETCH_SCHEDULE_FAIL:
+      state.allScheduleTime = [];
       return {
         ...state,
       };

@@ -4,10 +4,17 @@ import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl";
 import { languages } from "../../../utils";
 import { changeLanguageApp } from "../../../store/actions";
+import { withRouter } from "react-router-dom/cjs/react-router-dom";
 class HomeHeader extends Component {
   changeLanguage = (language) => {
     this.props.changeLanguageAppRedux(language);
   };
+  returnHome = () => {
+    if (this.props.history) {
+      this.props.history.push("/home");
+    }
+  };
+
   render() {
     console.log(this.props);
     let language = this.props.language;
@@ -18,7 +25,7 @@ class HomeHeader extends Component {
           <div className="homeHeader-content">
             <div className="left-content py-2">
               <i className="fas fa-bars"></i>
-              <div className="header-logo "></div>
+              <div className="header-logo" onClick={() =>this.returnHome()}></div>
             </div>
             <div className="center-content">
               <div className="child-content">
@@ -104,83 +111,85 @@ class HomeHeader extends Component {
             </div>
           </div>
         </div>
-        <div className="homeHeader-banner">
-          <div className="content-top">
-            <div className="banner-content1">
-              <FormattedMessage id="banner.title1" />
+        {this.props.isShowBanner === true && (
+          <div className="homeHeader-banner">
+            <div className="content-top">
+              <div className="banner-content1">
+                <FormattedMessage id="banner.title1" />
+              </div>
+              <div className="banner-content2">
+                <FormattedMessage id="banner.title2" />
+              </div>
             </div>
-            <div className="banner-content2">
-              <FormattedMessage id="banner.title2" />
+            <div className="content-bot">
+              <div className="option">
+                <div className="option-content">
+                  <div className="option-item">
+                    <div className="option-item-img1"></div>
+                  </div>
+                  <div className="option-title">
+                    <FormattedMessage id="banner.option1" />
+                  </div>
+                </div>
+              </div>
+              <div className="option">
+                <div className="option-content">
+                  <div className="option-item">
+                    <div className="option-item-img2"></div>
+                  </div>
+
+                  <div className="option-title">
+                    <FormattedMessage id="banner.option2" />
+                  </div>
+                </div>
+              </div>
+              <div className="option">
+                <div className="option-content">
+                  <div className="option-item">
+                    <div className="option-item-img3"></div>
+                  </div>
+
+                  <div className="option-title">
+                    <FormattedMessage id="banner.option3" />
+                  </div>
+                </div>
+              </div>
+              <div className="option">
+                <div className="option-content">
+                  <div className="option-item">
+                    <div className="option-item-img4"></div>
+                  </div>
+
+                  <div className="option-title">
+                    <FormattedMessage id="banner.option4" />
+                  </div>
+                </div>
+              </div>
+              <div className="option">
+                <div className="option-content">
+                  <div className="option-item">
+                    <div className="option-item-img5"></div>
+                  </div>
+
+                  <div className="option-title">
+                    <FormattedMessage id="banner.option5" />
+                  </div>
+                </div>
+              </div>
+              <div className="option">
+                <div className="option-content">
+                  <div className="option-item">
+                    <div className="option-item-img6"></div>
+                  </div>
+
+                  <div className="option-title">
+                    <FormattedMessage id="banner.option6" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="content-bot">
-            <div className="option">
-              <div className="option-content">
-                <div className="option-item">
-                  <div className="option-item-img1"></div>
-                </div>
-                <div className="option-title">
-                  <FormattedMessage id="banner.option1" />
-                </div>
-              </div>
-            </div>
-            <div className="option">
-              <div className="option-content">
-                <div className="option-item">
-                  <div className="option-item-img2"></div>
-                </div>
-
-                <div className="option-title">
-                  <FormattedMessage id="banner.option2" />
-                </div>
-              </div>
-            </div>
-            <div className="option">
-              <div className="option-content">
-                <div className="option-item">
-                  <div className="option-item-img3"></div>
-                </div>
-
-                <div className="option-title">
-                  <FormattedMessage id="banner.option3" />
-                </div>
-              </div>
-            </div>
-            <div className="option">
-              <div className="option-content">
-                <div className="option-item">
-                  <div className="option-item-img4"></div>
-                </div>
-
-                <div className="option-title">
-                  <FormattedMessage id="banner.option4" />
-                </div>
-              </div>
-            </div>
-            <div className="option">
-              <div className="option-content">
-                <div className="option-item">
-                  <div className="option-item-img5"></div>
-                </div>
-
-                <div className="option-title">
-                  <FormattedMessage id="banner.option5" />
-                </div>
-              </div>
-            </div>
-            <div className="option">
-              <div className="option-content">
-                <div className="option-item">
-                  <div className="option-item-img6"></div>
-                </div>
-
-                <div className="option-title">
-                  <FormattedMessage id="banner.option6" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </React.Fragment>
     );
   }
@@ -199,4 +208,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(HomeHeader)
+);

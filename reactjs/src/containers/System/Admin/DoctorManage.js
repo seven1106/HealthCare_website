@@ -3,6 +3,8 @@ import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import "./DoctorManage.scss";
 import * as actions from "../../../store/actions";
+import { CRUD_ACTIONS } from "../../../utils";
+import { getDetailInforDoctorApi } from "../../../services/userService";
 
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
@@ -16,12 +18,6 @@ import Select from "react-select";
 // Initialize a markdown parser
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
-
 class DoctorManage extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +30,7 @@ class DoctorManage extends Component {
     };
   }
   componentDidMount() {
-    this.props.getAllDoctor();
+    this.props.getAllDoctors();
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.allDoctors !== this.props.allDoctors) {
@@ -73,8 +69,24 @@ class DoctorManage extends Component {
     });
     console.log(this.state);
   };
-  handleChange = (selectedOption) => {
+  handleChange = async (selectedOption) => {
     this.setState({ selectedOption });
+    let res = await getDetailInforDoctorApi(selectedOption.value);
+    if (res && res.errCode === 0 && res.data && res.data.markdown) {
+      let data = res.data.markdown;
+      this.setState({
+        contentMarkdown: data.contentMarkdown,
+        contentHTML: data.contentHTML,
+        description: data.description,
+      });
+      console.log(this.state);
+    } else {
+      this.setState({
+        contentMarkdown: "",
+        contentHTML: "",
+        description: "",
+      });
+    }
   };
   handleOnChangeDesc = (e) => {
     this.setState({
@@ -97,6 +109,8 @@ class DoctorManage extends Component {
                   value={this.state.selectedOption}
                   onChange={this.handleChange}
                   options={this.state.listDrs}
+                  placeholder="Select Doctor"
+
                 />
               </div>
               <div className="selectDoctor-right form-group">
@@ -115,6 +129,7 @@ class DoctorManage extends Component {
                 style={{ height: "500px" }}
                 renderHTML={(text) => mdParser.render(text)}
                 onChange={this.handleEditorChange}
+                value={this.state.contentMarkdown}
               />
             </div>
           </div>
@@ -124,7 +139,7 @@ class DoctorManage extends Component {
             className="btn px-3"
             onClick={() => this.handleSaveContentMarkdown()}
           >
-            <span> Save info</span>
+            <span> Save changes</span>
           </button>
         </div>
       </React.Fragment>
@@ -140,7 +155,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllDoctor: () => dispatch(actions.fetchAllDoctorStart()),
+    getAllDoctors: () => dispatch(actions.fetchAllDoctorStart()),
     saveDetail: (data) => dispatch(actions.saveDetailDoctorStart(data)),
   };
 };
