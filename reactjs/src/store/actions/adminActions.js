@@ -276,6 +276,43 @@ export const fetchScheduleSuccess = (data) => ({
 export const fetchScheduleFail = () => ({
   type: actionTypes.FETCH_SCHEDULE_FAIL,
 });
+export const fetchAllDetailDoctorStart = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let resPri = await getAllCodeApi("PRICE");
+      let resPay = await getAllCodeApi("PAYMENT");
+      let resPro = await getAllCodeApi("PROVINCE");
+
+      if (
+        resPri &&
+        resPri.errCode === 0 &&
+        resPay &&
+        resPay.errCode === 0 &&
+        resPro &&
+        resPro.errCode === 0
+      ) {
+        let data = {
+          resPri: resPri.data,
+          resPay: resPay.data,
+          resPro: resPro.data,
+        };
+        dispatch(fetchAllDetailDoctorSuccess(data));
+      } else {
+        dispatch(fetchAllDetailDoctorFail());
+      }
+    } catch (e) {
+      dispatch(fetchAllDetailDoctorFail());
+      console.log(e);
+    }
+  };
+};
+export const fetchAllDetailDoctorSuccess = (data) => ({
+  type: actionTypes.FETCH_ALL_DETAIL_DOCTOR_SUCCESS,
+  allDetailDoctor: data,
+});
+export const fetchAllDetailDoctorFail = () => ({
+  type: actionTypes.FETCH_ALL_DETAIL_DOCTOR_FAIL,
+});
 
 export const saveDetailDoctorStart = (data) => {
   return async (dispatch, getState) => {

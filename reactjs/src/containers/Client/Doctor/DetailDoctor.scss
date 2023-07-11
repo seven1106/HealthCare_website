@@ -2,7 +2,7 @@
   .detail-doctor-body {
     .intro-dr {
       display: flex;
-      padding: 10px 80px;
+      padding: 20px 150px;
 
       height: 130px;
       .content-left-dr {
@@ -31,19 +31,22 @@
       }
     }
     .schedule-dr {
-      padding: 20px 100px;
+      padding: 20px 150px;
       height: 300px;
       display: flex;
-      .content-left{
+      .content-left {
         width: 50%;
       }
-      .content-right{
+      .content-right {
         width: 50%;
+        border-left-style: double;
+        padding: 20px;
       }
     }
     .detail-dr {
       background-color: #f5f5f5;
-      padding: 20px 100px;
+      padding: 20px 150px;
+
       h3 {
         font-size: 17px;
       }
@@ -52,7 +55,8 @@
       }
     }
     .cmt-dr {
-      padding: 20px 100px;
+      padding: 20px 150px;
+
       height: 300px;
       .cmt-dr-title {
         font-size: 17px;

@@ -139,7 +139,6 @@ class ScheduleManage extends Component {
                   <DatePicker
                     className="form-control"
                     onChange={this.handleChangeDate}
-                    value={this.state.currentDate}
                     minDate={new Date()}
                   />
                 </div>
@@ -162,7 +161,7 @@ class ScheduleManage extends Component {
                             </button>
                           );
                         })
-                      : ""}
+                      : "Empty"}
                   </div>
                 </div>
                 <div className="col-12">

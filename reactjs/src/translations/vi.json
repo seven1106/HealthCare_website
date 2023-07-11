@@ -1,4 +1,11 @@
 {
+  "detail-dr": {
+    "schedule": " Lịch khám",
+    "no-schedule": "- Bác sĩ chưa có lịch khám trong  hôm nay.",
+    "choose": "Chọn ",
+    "book-now": "  và đặt (Phí đặt lịch 0đ)"
+  },
+
   "homepage": {
     "top-doctor": "Bác sĩ nổi bật tuần qua",
     "see-more": "XEM THÊM"

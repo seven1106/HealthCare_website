@@ -1,4 +1,11 @@
 {
+  "detail-dr":{
+    "schedule": " Schedule",
+    "no-schedule": "- The doctor has not set up a schedule in today.",
+    "choose": "Choose ",
+    "book-now": "and book (Scheduling fee 0 VND)"
+  },
+
   "homepage": {
     "top-doctor": "Outstanding doctors in Last week",
     "see-more": "See more"

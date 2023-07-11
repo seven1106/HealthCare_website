@@ -68,15 +68,58 @@ let getAllDoctors = () => {
 let saveDetailInforDoctor = (infor) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!infor.doctorId || !infor.contentHTML || !infor.contentMarkdown) {
+      if (
+        !infor.doctorId ||
+        !infor.contentHTML ||
+        !infor.contentMarkdown ||
+        !infor.description ||
+        !infor.selectedPri ||
+        !infor.selectedPay ||
+        !infor.selectedPro ||
+        !infor.nameClinic ||
+        !infor.addressClinic
+      ) {
         resolve({
           errCode: 1,
           errMessage: "Missing required parameter",
         });
       } else {
+        let detailDoctor = await db.detailDoctor.findOne({
+          where: { doctorId: infor.doctorId },
+        });
+        if (detailDoctor) {
+          await detailDoctor.save({
+            priceId: infor.selectedPri,
+            paymentId: infor.selectedPay,
+            provinceId: infor.selectedPro,
+            nameClinic: infor.nameClinic,
+            addressClinic: infor.addressClinic,
+            doctorId: infor.doctorId,
+            note: infor.note,
+          });
+          resolve({
+            errCode: 0,
+            message: "Update the doctor's infor success",
+          });
+        } else {
+          await db.detailDoctor.create({
+            priceId: infor.selectedPri,
+            paymentId: infor.selectedPay,
+            provinceId: infor.selectedPro,
+            nameClinic: infor.nameClinic,
+            addressClinic: infor.addressClinic,
+            doctorId: infor.doctorId,
+            note: infor.note,
+          });
+          resolve({
+            errCode: 0,
+            message: "Create the doctor's infor success",
+          });
+        }
         let doctorInfor = await db.markdown.findOne({
           where: { doctorId: infor.doctorId },
         });
+
         if (doctorInfor) {
           //update
           await doctorInfor.save({
@@ -85,6 +128,7 @@ let saveDetailInforDoctor = (infor) => {
             description: infor.description,
             doctorId: infor.doctorId,
           });
+
           resolve({
             errCode: 0,
             message: "Update the doctor's infor success",
@@ -97,6 +141,7 @@ let saveDetailInforDoctor = (infor) => {
             description: infor.description,
             doctorId: infor.doctorId,
           });
+
           resolve({
             errCode: 0,
             message: "Create the doctor's infor success",
@@ -135,8 +180,31 @@ let getDetailDoctorById = (id) => {
             },
             {
               model: db.markdown,
-              as: "markdown",
               attributes: ["contentHTML", "contentMarkdown", "description"],
+            },
+            {
+              model: db.detailDoctor,
+
+              attributes: {
+                exclude: ["id", "doctorId"],
+              },
+              include: [
+                {
+                  model: db.allCode,
+                  as: "priceData",
+                  attributes: ["value_en", "value_vi"],
+                },
+                {
+                  model: db.allCode,
+                  as: "paymentData",
+                  attributes: ["value_en", "value_vi"],
+                },
+                {
+                  model: db.allCode,
+                  as: "provinceData",
+                  attributes: ["value_en", "value_vi"],
+                },
+              ],
             },
           ],
           raw: true,
