@@ -38,7 +38,6 @@ class OutstandDoctor extends Component {
   render() {
     let arrDoctor = this.state.arrDoctor;
     let { language } = this.props;
-    console.log(arrDoctor);
     return (
       <div className="section-share outstandDoctor">
         <div className="section-container">
@@ -58,7 +57,6 @@ class OutstandDoctor extends Component {
                   let img64 = "";
                   if (item.image) {
                     img64 = new Buffer(item.image, "base64").toString("binary");
-                    console.log("check", item.image);
                   }
                   let vi = `${item.positionData.value_vi} ${item.firstName} ${item.lastName}`;
                   let en = `${item.positionData.value_en} ${item.firstName} ${item.lastName}`;

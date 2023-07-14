@@ -18,7 +18,7 @@ class ScheduleManage extends Component {
       listDoctors: [],
       listSchedules: [],
       selectedDoctor: null,
-      currentDate: "",
+      currentDate:  new Date(),
       rangeTime: [],
     };
   }
@@ -139,6 +139,7 @@ class ScheduleManage extends Component {
                   <DatePicker
                     className="form-control"
                     onChange={this.handleChangeDate}
+                    value={this.state.currentDate}
                     minDate={new Date()}
                   />
                 </div>

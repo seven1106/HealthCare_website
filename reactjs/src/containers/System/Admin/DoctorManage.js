@@ -11,6 +11,7 @@ import MdEditor from "react-markdown-editor-lite";
 // import style manually
 import "react-markdown-editor-lite/lib/index.css";
 import Select from "react-select";
+import { toast } from "react-toastify";
 
 // Register plugins if required
 // MdEditor.use(YOUR_PLUGINS_HERE);
@@ -67,14 +68,14 @@ class DoctorManage extends Component {
     let data = [];
     if (input && input.length > 0) {
       input.map((item) => {
-        // let name = `${item.firstName} ${item.lastName}`;
         let name =
           type === "USERS"
             ? `${item.firstName} ${item.lastName}`
             : item.value_vi;
+        let value = type === "USERS" ? item.id : item.key;
 
         data.push({
-          value: item.id,
+          value: value,
           label: name,
         });
       });
@@ -89,6 +90,12 @@ class DoctorManage extends Component {
     });
   };
   handleSaveContentMarkdown = () => {
+    let { selectedOption, selectedPay, selectedPro,selectedPri } = this.state;
+    if (!selectedOption || !selectedPay || !selectedPro || !selectedPri) {
+      toast.error("Please do not leave blank");
+      return;
+    }
+
     this.props.saveDetail({
       doctorId: this.state.selectedOption.value,
       contentHTML: this.state.contentHTML,
@@ -154,6 +161,12 @@ class DoctorManage extends Component {
         contentMarkdown: "",
         contentHTML: "",
         description: "",
+        selectedPri: "",
+        selectedPay: "",
+        selectedPro: "",
+        addressClinic: "",
+        nameClinic: "",
+        note: "",
       });
     }
   };
@@ -164,7 +177,7 @@ class DoctorManage extends Component {
   };
 
   render() {
-    console.log("check", this.state);
+    console.log("this.state", this.state);
     return (
       <React.Fragment>
         <div className="doctorManage-container px-2">

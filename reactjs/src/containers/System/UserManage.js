@@ -97,7 +97,6 @@ class UserManage extends Component {
     });
   };
   render() {
-    console.log("check", this.state);
     let listUsers = this.state.listUsers;
     return (
       <CustomScrollbars style={{ height: "100vh", wight: "100%" }}>
@@ -154,7 +153,6 @@ class UserManage extends Component {
               </tr>
               {listUsers &&
                 listUsers.map((item, index) => {
-                  console.log(item);
                   return (
                     <tr>
                       <td>{item.email}</td>

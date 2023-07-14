@@ -1,4 +1,12 @@
 {
+  "extra-info": {
+    "hide": "Ẩn bớt",
+    "show": "Xem chi tiết",
+    "adress": "ĐỊA CHỈ KHÁM: ",
+    "price": "GIÁ KHÁM: ",
+    "payment": "PHƯƠNG THỨC THANH TOÁN: "
+
+  },
   "detail-dr": {
     "schedule": " Lịch khám",
     "no-schedule": "- Bác sĩ chưa có lịch khám trong  hôm nay.",

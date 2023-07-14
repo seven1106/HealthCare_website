@@ -6,6 +6,7 @@ import "./DetailDoctor.scss";
 import { getDetailInforDoctorApi } from "../../../services/userService";
 import HomeFooter from "../../HomePage/Section/HomeFooter";
 import DoctorSchedule from "./DoctorSchedule";
+import ExtraInfoDoctor from "./ExtraInfoDoctor";
 
 class DetailDoctor extends Component {
   constructor(props) {
@@ -16,9 +17,7 @@ class DetailDoctor extends Component {
   }
   async componentDidMount() {
     if (this.props.match.params.id) {
-      console.log(this.props.match.params.id);
       let res = await getDetailInforDoctorApi(this.props.match.params.id);
-      console.log(res);
       if (res && res.errCode === 0) {
         this.setState({
           detailDoctor: res.data,
@@ -27,7 +26,6 @@ class DetailDoctor extends Component {
     }
   }
   render() {
-    console.log(this.props.match.params.id);
     let { detailDoctor } = this.state;
     let { language } = this.props;
 
@@ -48,7 +46,13 @@ class DetailDoctor extends Component {
             <div className="intro-dr">
               <div
                 className="content-left-dr"
-                style={{ backgroundImage: `url(${img64})` }}
+                style={{
+                  backgroundImage: `url(${img64})`,
+                  width: "100px",
+                  height: "100px",
+                  marginRight: "15px",
+                  marginBottom: "15px",
+                }}
               ></div>
               <div className="content-right-dr">
                 <div className="name-dr">
@@ -72,7 +76,11 @@ class DetailDoctor extends Component {
                 />
               </div>
               <div className="content-right">
-                <div className="title-dr">Thông tin liên hệ</div>/
+                <ExtraInfoDoctor
+                  doctorId={
+                    detailDoctor.id && detailDoctor.id ? detailDoctor.id : -1
+                  }
+                />
               </div>
             </div>
             <div className="detail-dr">

@@ -16,7 +16,6 @@ class HomeHeader extends Component {
   };
 
   render() {
-    console.log(this.props);
     let language = this.props.language;
 
     return (

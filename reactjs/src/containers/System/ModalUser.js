@@ -46,7 +46,6 @@ class ModalUser extends Component {
       this.props.createNewUser(this.state);
     }
 
-    console.log("check", this.state);
   };
 
   render() {

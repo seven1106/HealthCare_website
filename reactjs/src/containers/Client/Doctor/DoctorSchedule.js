@@ -6,12 +6,15 @@ import moment from "moment";
 import localization from "moment/locale/vi";
 import { getScheduleDoctorByIdApi } from "../../../services/userService";
 import { FormattedMessage } from "react-intl";
+import BookingModal from "./BookingModal";
 class DoctorSchedule extends Component {
   constructor(props) {
     super(props);
     this.state = {
       allDays: [],
       allAvailableTime: [],
+      isOpenBookingModal: false,
+      dataBookingModal: {},
     };
   }
   async componentDidMount() {
@@ -83,9 +86,21 @@ class DoctorSchedule extends Component {
       }
     }
   };
+  handleClickSchedule = (item) => {
+    this.setState({
+      isOpenBookingModal: true,
+      dataBookingModal: item,
+    });
+  };
+  closeModal = () => {
+    this.setState({
+      isOpenBookingModal: false,
+    });
+  };
 
   render() {
-    let { allDays, allAvailableTime } = this.state;
+    let { allDays, allAvailableTime, isOpenBookingModal, dataBookingModal } =
+      this.state;
     return (
       <>
         <div className="detail-doctor-container">
@@ -120,7 +135,11 @@ class DoctorSchedule extends Component {
                   (item, index) => {
                     let time = item.timeType;
                     return (
-                      <button key={index} className="btn-time">
+                      <button
+                        key={index}
+                        className="btn-time"
+                        onClick={() =>this.handleClickSchedule(item)}
+                      >
                         {time}
                       </button>
                     );
@@ -148,6 +167,12 @@ class DoctorSchedule extends Component {
             </div>
           </div>
         </div>
+
+        <BookingModal
+          isOpen={isOpenBookingModal}
+          data={dataBookingModal}
+          closeModal={this.closeModal}
+        />
       </>
     );
   }

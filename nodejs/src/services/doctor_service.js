@@ -68,17 +68,7 @@ let getAllDoctors = () => {
 let saveDetailInforDoctor = (infor) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (
-        !infor.doctorId ||
-        !infor.contentHTML ||
-        !infor.contentMarkdown ||
-        !infor.description ||
-        !infor.selectedPri ||
-        !infor.selectedPay ||
-        !infor.selectedPro ||
-        !infor.nameClinic ||
-        !infor.addressClinic
-      ) {
+      if (!infor.doctorId) {
         resolve({
           errCode: 1,
           errMessage: "Missing required parameter",
@@ -294,6 +284,119 @@ let getScheduleByDate = (doctorId, date) => {
     }
   });
 };
+let getExtraDoctorInfoById = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!id) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing required parameter",
+        });
+      } else {
+        let data = await db.detailDoctor.findOne({
+          where: { doctorId: id },
+          attributes: {
+            exclude: ["password"],
+          },
+          include: [
+            {
+              model: db.allCode,
+              as: "priceData",
+              attributes: ["value_en", "value_vi"],
+            },
+            {
+              model: db.allCode,
+              as: "paymentData",
+              attributes: ["value_en", "value_vi"],
+            },
+            {
+              model: db.allCode,
+              as: "provinceData",
+              attributes: ["value_en", "value_vi"],
+            },
+          ],
+          raw: false,
+          nest: true,
+        });
+        if (!data) data = {};
+        resolve({
+          errCode: 0,
+          data: data,
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+let getProfileDoctorById = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!id) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing required parameter",
+        });
+      } else {
+        let data = await db.User.findOne({
+          where: { id: id },
+          attributes: {
+            exclude: ["password"],
+          },
+          include: [
+            {
+              model: db.allCode,
+              as: "positionData",
+              attributes: ["value_en", "value_vi"],
+            },
+
+            {
+              model: db.markdown,
+              attributes: ["contentHTML", "contentMarkdown", "description"],
+            },
+            {
+              model: db.detailDoctor,
+              attributes: {
+                exclude: ["id", "doctorId"],
+              },
+              include: [
+                {
+                  model: db.allCode,
+                  as: "priceData",
+                  attributes: ["value_en", "value_vi"],
+                },
+                {
+                  model: db.allCode,
+                  as: "paymentData",
+                  attributes: ["value_en", "value_vi"],
+                },
+                {
+                  model: db.allCode,
+                  as: "provinceData",
+                  attributes: ["value_en", "value_vi"],
+                },
+              ],
+            },
+          ],
+          raw: true,
+          nest: true,
+        });
+        if (data && data.image) {
+          data.image = new Buffer(data.image, "base64").toString("binary");
+        }
+        if (!data) {
+          data = {};
+        }
+        resolve({
+          errCode: 0,
+          data: data,
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
@@ -302,4 +405,6 @@ module.exports = {
   getDetailDoctorById: getDetailDoctorById,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleByDate: getScheduleByDate,
+  getExtraDoctorInfoById: getExtraDoctorInfoById,
+  getProfileDoctorById: getProfileDoctorById,
 };

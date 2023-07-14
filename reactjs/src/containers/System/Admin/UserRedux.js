@@ -89,7 +89,6 @@ class UserRedux extends Component {
     this.setState({
       ...copyState,
     });
-    console.log(this.state);
   };
 
   handleSaveUser = async () => {

@@ -1,5 +1,12 @@
 {
-  "detail-dr":{
+  "extra-info": {
+    "hide": "Hide",
+    "show": "See details",
+    "adress": "ADRESS: ",
+    "price": "PRICE: ",
+    "payment": "PAYMENT METHODS: "
+  },
+  "detail-dr": {
     "schedule": " Schedule",
     "no-schedule": "- The doctor has not set up a schedule in today.",
     "choose": "Choose ",
