@@ -44,11 +44,31 @@ const getExtraDoctorInfoByIdApi = (doctorId) => {
 const getProfileDoctorByIdApi = (doctorId) => {
   return axios.get(`/api/get-profile-doctor-by-id?doctorId=${doctorId}`);
 };
+const postBookAppointmentApi = (data) => {
+  return axios.post(`/api/patient-book-appointment`, data);
+};
+const postVerifyBookingApi = (data) => {
+  return axios.post(`/api/verify-booking`, data);
+};
+const postCreateSpecialtyApi = (data) => {
+  return axios.post(`/api/create-specialty`, data);
+};
+const getAllSpecialtyApi = () => {
+  return axios.get(`/api/get-all-specialty`);
+};
+const getDetailSpecialtyByIdApi = (id) => {
+  return axios.get(`/api/get-detail-specialty-by-id?id=${id}`);
+};
+
 export {
+  getDetailSpecialtyByIdApi,
+  getAllSpecialtyApi,
   handleLoginApi,
+  postBookAppointmentApi,
   getAllUserApi,
   createNewUserApi,
   editUserApi,
+  
   deleteUserApi,
   getAllCodeApi,
   getTopDoctorHomeApi,
@@ -59,4 +79,6 @@ export {
   getScheduleDoctorByIdApi,
   getExtraDoctorInfoByIdApi,
   getProfileDoctorByIdApi,
+  postVerifyBookingApi,
+  postCreateSpecialtyApi,
 };

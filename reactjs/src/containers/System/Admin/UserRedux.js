@@ -71,7 +71,7 @@ class UserRedux extends Component {
       });
     }
   }
-  handelOnChangeImg = async (event) => {
+  handleOnChangeImg = async (event) => {
     let file = event.target.files[0];
     if (file) {
       let base64 = await CommonUtils.getBase64Image(file);
@@ -377,7 +377,7 @@ class UserRedux extends Component {
                     type="file"
                     id="formFile"
                     onChange={(event) => {
-                      this.handelOnChangeImg(event);
+                      this.handleOnChangeImg(event);
                     }}
                   />
                   <img

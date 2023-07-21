@@ -5,15 +5,14 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 class ModalDeleteUser extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-    };
+    this.state = {};
   }
 
   componentDidMount() {}
   toggle = () => {
     this.props.toggleModal();
   };
-  handelDeleteUser = async () => {
+  handleDeleteUser = async () => {
     await this.props.deleteUser(this.props.userId);
   };
   render() {
@@ -39,7 +38,7 @@ class ModalDeleteUser extends Component {
             className="btn px-2"
             color="primary"
             onClick={() => {
-              this.handelDeleteUser();
+              this.handleDeleteUser();
             }}
           >
             Yes

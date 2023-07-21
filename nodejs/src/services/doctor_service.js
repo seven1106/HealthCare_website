@@ -68,75 +68,66 @@ let getAllDoctors = () => {
 let saveDetailInforDoctor = (infor) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!infor.doctorId) {
+      let detailDoctor = await db.detailDoctor.findOne({
+        where: { doctorId: infor.doctorId },
+      });
+      if (detailDoctor) {
+        detailDoctor.priceId = infor.selectedPri;
+        detailDoctor.paymentId = infor.selectedPay;
+        detailDoctor.provinceId = infor.selectedPro;
+        detailDoctor.nameClinic = infor.nameClinic;
+        detailDoctor.addressClinic = infor.addressClinic;
+        detailDoctor.note = infor.note;
+        await detailDoctor.save();
+
         resolve({
-          errCode: 1,
-          errMessage: "Missing required parameter",
+          errCode: 0,
+          message: "Update the doctor's infor success",
         });
       } else {
-        let detailDoctor = await db.detailDoctor.findOne({
-          where: { doctorId: infor.doctorId },
+        await db.detailDoctor.create({
+          priceId: infor.selectedPri,
+          paymentId: infor.selectedPay,
+          provinceId: infor.selectedPro,
+          nameClinic: infor.nameClinic,
+          addressClinic: infor.addressClinic,
+          doctorId: infor.doctorId,
+          note: infor.note,
         });
-        if (detailDoctor) {
-          await detailDoctor.save({
-            priceId: infor.selectedPri,
-            paymentId: infor.selectedPay,
-            provinceId: infor.selectedPro,
-            nameClinic: infor.nameClinic,
-            addressClinic: infor.addressClinic,
-            doctorId: infor.doctorId,
-            note: infor.note,
-          });
-          resolve({
-            errCode: 0,
-            message: "Update the doctor's infor success",
-          });
-        } else {
-          await db.detailDoctor.create({
-            priceId: infor.selectedPri,
-            paymentId: infor.selectedPay,
-            provinceId: infor.selectedPro,
-            nameClinic: infor.nameClinic,
-            addressClinic: infor.addressClinic,
-            doctorId: infor.doctorId,
-            note: infor.note,
-          });
-          resolve({
-            errCode: 0,
-            message: "Create the doctor's infor success",
-          });
-        }
-        let doctorInfor = await db.markdown.findOne({
-          where: { doctorId: infor.doctorId },
+        resolve({
+          errCode: 0,
+          message: "Create the doctor's infor success",
+        });
+      }
+      let markdown = await db.markdown.findOne({
+        where: { doctorId: infor.doctorId },
+      });
+
+      if (markdown) {
+        //update
+        (contentHTML = infor.contentHTML),
+          (contentMarkdown = infor.contentMarkdown),
+          (description = infor.description),
+          (doctorId = infor.doctorId),
+          await markdown.save();
+
+        resolve({
+          errCode: 0,
+          message: "Update the doctor's infor success",
+        });
+      } else {
+        //create
+        await db.markdown.create({
+          contentHTML: infor.contentHTML,
+          contentMarkdown: infor.contentMarkdown,
+          description: infor.description,
+          doctorId: infor.doctorId,
         });
 
-        if (doctorInfor) {
-          //update
-          await doctorInfor.save({
-            contentHTML: infor.contentHTML,
-            contentMarkdown: infor.contentMarkdown,
-            description: infor.description,
-            doctorId: infor.doctorId,
-          });
-
-          resolve({
-            errCode: 0,
-            message: "Update the doctor's infor success",
-          });
-        } else {
-          //create
-          await db.markdown.create({
-            contentHTML: infor.contentHTML,
-            contentMarkdown: infor.contentMarkdown,
-            description: infor.description,
-            doctorId: infor.doctorId,
-          });
-
-          resolve({
-            errCode: 0,
-            message: "Create the doctor's infor success",
-          });
-        }
+        resolve({
+          errCode: 0,
+          message: "Create the doctor's infor success",
+        });
       }
     } catch (e) {
       reject(e);

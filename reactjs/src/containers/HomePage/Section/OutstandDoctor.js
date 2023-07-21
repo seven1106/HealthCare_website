@@ -36,6 +36,7 @@ class OutstandDoctor extends Component {
   };
 
   render() {
+    console.log("this.props.listDoctor", this.props.listDoctor);
     let arrDoctor = this.state.arrDoctor;
     let { language } = this.props;
     return (

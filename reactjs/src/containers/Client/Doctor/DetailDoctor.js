@@ -28,6 +28,7 @@ class DetailDoctor extends Component {
   render() {
     let { detailDoctor } = this.state;
     let { language } = this.props;
+    console.log("detailDoctor", detailDoctor);
 
     let img64 =
       detailDoctor && detailDoctor.image ? this.state.detailDoctor.image : "";
@@ -73,6 +74,12 @@ class DetailDoctor extends Component {
                   doctorId={
                     detailDoctor.id && detailDoctor.id ? detailDoctor.id : -1
                   }
+                  doctorName={
+                    detailDoctor.firstName && detailDoctor.lastName
+                      ? `${detailDoctor.firstName} ${detailDoctor.lastName}`
+                      : ""
+                  }
+                  dataClinic={detailDoctor.detailDoctor}
                 />
               </div>
               <div className="content-right">

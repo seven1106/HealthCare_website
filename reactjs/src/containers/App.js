@@ -5,6 +5,7 @@ import { ConnectedRouter as Router } from "connected-react-router";
 import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
 import DetailDoctor from "../containers/Client/Doctor/DetailDoctor";
+import DetailSpecialty from "../containers/Client/Specialty/DetailSpecialty";
 import Doctor from "../routes/Doctor";
 import {
   userIsAuthenticated,
@@ -19,6 +20,7 @@ import HomePage from "./HomePage/HomePage.js";
 import Login from "./Auth/Login";
 import Header from "./Header/Header";
 import System from "../routes/System";
+import VerifyBooking from "./Client/VerifyBooking";
 
 import { CustomToastCloseButton } from "../components/CustomToast";
 // import ConfirmModal from "../components/ConfirmModal";
@@ -68,6 +70,8 @@ class App extends Component {
                   />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                  <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
+                  <Route path={path.VERIFY_BOOKING} component={VerifyBooking} />
                 </Switch>
               </CustomScrollbars>
             </div>

@@ -1,56 +1,30 @@
-.section-container {
-  height: 500px;
-  width: 100%;
-  .section-content {
-    height: 450px;
-    width: 100%;
-    padding: 0 100px;
+.specialty {
+  .section-item {
+    padding:5px  ;
 
-    .section-header {
-      height: 60px;
-      margin-bottom: 30px;
-      padding-top: 30px;
-      .section-title {
-        font-size: 24px;
+
+    .specialty-border {
+      .specialty-img {
+        display: flex;
+        
+      }
+     
+      &:hover {
+        cursor: pointer;
+        .specialty-title {
+          color: #f7d800;
+        }
+      }
+      .specialty-title {
+        font-size: 16px;
         font-weight: bold;
+        color: #111;
       }
-      .section-button {
-        float: right;
-        padding: 10px 20px;
-        font-size: 11px;
-        border: none;
-        outline: none;
-        background-color: #ebebeb;
-        color: #0b0b0b;
-        display: block;
-        &:hover {
-          cursor: pointer;
-          color: #fff;
-          background: #f7d800;
-        }
-      }
-    }
-      .spec-img {
-        height: 150px;
-        margin-left: 7px;
-        width: 320px;
-        padding-top: 56.25%;
-        background: url("../../../assets/slick-img/coxuongkhop-spec.jpg");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        .item-title {
-          color: #111;
-          padding: 5px 0;
-          font-size: 14px;
-          font-family: 14px/1.5 "Montserrat", sans-serif;
-          outline: none;
-          &:hover {
-            cursor: pointer;
-            color: #f7d800;
-          }
-        }
+      .spec-title {
+        font-size: 14px;
+        color: #111;
+        margin-bottom: 10px;
       }
     }
   }
-
+}

@@ -1,11 +1,28 @@
 {
+  "verifyBookingSuccess": "Xác nhận đặt lịch thành công",
+  "verifyBookingFail": "Lịch hẹn không tồn tại hoặc đã được xác nhận",
+
+  "booking-modal": {
+    "email-confirm": "Chúng tôi sẽ gửi một email để xác nhận, vui lòng nhập đúng email.",
+    "reason": "Tình trạng sức khỏe",
+    "birth": "Ngày sinh",
+    "fullname": "Tên đầy đủ",
+    "phone": "Số điện thoại",
+    "address": "Địa chỉ",
+    "gender": "Giới tính",
+    "booking-success": "Đặt lịch thành công! \n Vui lòng kiểm tra email để xác nhận. ",
+    "booking-fail": "Đặt lịch thất bại",
+    "booking": "Đặt lịch",
+    "cancel": "Hủy",
+    "book-schedule": "Đặt lịch khám",
+    "book-free": "Miễn phí đặt lịch"
+  },
   "extra-info": {
     "hide": "Ẩn bớt",
     "show": "Xem chi tiết",
     "adress": "ĐỊA CHỈ KHÁM: ",
     "price": "GIÁ KHÁM: ",
     "payment": "PHƯƠNG THỨC THANH TOÁN: "
-
   },
   "detail-dr": {
     "schedule": " Lịch khám",

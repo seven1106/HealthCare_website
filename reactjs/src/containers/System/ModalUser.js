@@ -40,12 +40,11 @@ class ModalUser extends Component {
     }
     return isValid;
   };
-  handelAddUser = () => {
+  handleAddUser = () => {
     let isValid = this.checkValidateInput();
     if (isValid === true) {
       this.props.createNewUser(this.state);
     }
-
   };
 
   render() {
@@ -180,7 +179,7 @@ class ModalUser extends Component {
             className="btn px-2"
             color="primary"
             onClick={() => {
-              this.handelAddUser();
+              this.handleAddUser();
             }}
           >
             Add new

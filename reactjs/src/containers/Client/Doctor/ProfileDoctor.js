@@ -37,7 +37,6 @@ class ProfileDoctor extends Component {
   }
   renderTimeBook = (dataTime) => {
     let { language } = this.props;
-    console.log("dataTime", dataTime);
     if (dataTime) {
       let time = dataTime.timeType;
 
@@ -48,7 +47,7 @@ class ProfileDoctor extends Component {
           <div className="time-book">
             {time} - {date}
           </div>
-          <div>Mien phi dat lich</div>
+          <div><FormattedMessage id={"booking-modal.book-free"}/></div>
         </>
       );
     }
@@ -58,7 +57,6 @@ class ProfileDoctor extends Component {
   render() {
     let { dataProFile } = this.state;
     let { dataTime, isShowDescription } = this.props;
-    console.log("dataProFile", dataTime);
     let img64 =
       dataProFile && dataProFile.image ? this.state.dataProFile.image : "";
     let { language } = this.props;

@@ -18,9 +18,12 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: "key",
         as: "genderData",
       });
-      User.hasOne(models.markdown, { foreignKey: "doctorId"});
+      User.hasOne(models.markdown, { foreignKey: "doctorId" });
       User.hasOne(models.detailDoctor, { foreignKey: "doctorId" });
-
+      User.hasMany(models.schedule, {
+        foreignKey: "doctorId",
+        as: "doctorData",
+      });
     }
   }
   User.init(
@@ -32,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       address: DataTypes.STRING,
       gender: DataTypes.STRING,
-      image: DataTypes.STRING,
+      image: DataTypes.TEXT,
       phoneNumber: DataTypes.STRING,
       roleId: DataTypes.STRING,
       position: DataTypes.STRING,

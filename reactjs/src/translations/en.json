@@ -1,4 +1,22 @@
 {
+  "verifyBookingSuccess": "Confirmation of booking successful",
+  "verifyBookingFail": "Appointment does not exist or has been confirmed",
+  "booking-modal": {
+    "email-confirm": "We'll sent an email to confirm, please input correct email.",
+    "reason": "Health status",
+    "birth": "Date of birth",
+    "fullname": "Full name",
+    "phone": "Phone",
+    "address": "Address",
+    "gender": "Gender",
+    "booking-success": "Your booking was successful! \nPlease check your email for confirmation.",
+    "booking-fail": "Booking fail",
+    "booking": "Booking",
+    "cancel": "Cancel",
+    "book-schedule": "Booking schedule",
+    "book-free": "Book an appointment for free"
+
+  },
   "extra-info": {
     "hide": "Hide",
     "show": "See details",
