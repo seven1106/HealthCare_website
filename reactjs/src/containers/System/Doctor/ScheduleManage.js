@@ -18,7 +18,7 @@ class ScheduleManage extends Component {
       listDoctors: [],
       listSchedules: [],
       selectedDoctor: null,
-      currentDate:  new Date(),
+      currentDate: new Date(),
       rangeTime: [],
     };
   }
@@ -125,7 +125,7 @@ class ScheduleManage extends Component {
           <div className="schedule-body">
             <div className="container">
               <div className="row">
-                <div className="col-6 form-group">
+                <div className="col-6 form-group" style={{ zIndex: "10" }}>
                   <label>Doctor</label>
                   <Select
                     value={this.state.selectedDoctor}

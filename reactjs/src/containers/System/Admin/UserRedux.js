@@ -135,15 +135,16 @@ class UserRedux extends Component {
       lastName: user.lastName,
       address: user.address,
       phoneNumber: user.phoneNumber,
-      roleId: user.roleId,
+      role: user.roleId,
       gender: user.gender,
       position: user.position,
-      avatar: "",
+      avatar: imgBase64,
       avatarUrl: imgBase64,
       action: CRUD_ACTIONS.EDIT,
     });
   };
   render() {
+    console.log("user-redux", this.state);
     let genders = this.state.genderArr;
     let loadingGender = this.state.loadingGender;
     let roles = this.state.roleArr;

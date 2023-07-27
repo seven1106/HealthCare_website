@@ -19,6 +19,18 @@ class DoctorSchedule extends Component {
     };
   }
   async componentDidMount() {
+    
+    let allDay = this.SetArrDays(this.props.language);
+    let res = await getScheduleDoctorByIdApi(
+      this.props.doctorId,
+      allDay[0].value
+    );
+
+    this.setState({
+      allAvailableTime: res.data || [],
+      doctorName: this.props.doctorName,
+    });
+  
     let { language } = this.props;
     this.SetArrDays(language);
     let allDays = this.SetArrDays(language);

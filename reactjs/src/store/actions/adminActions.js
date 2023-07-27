@@ -8,6 +8,7 @@ import {
   getTopDoctorHomeApi,
   getAllDoctorsApi,
   saveDetailInforDoctorApi,
+  getAllSpecialtyApi,
 } from "../../services/userService";
 import { toast } from "react-toastify";
 export const adminLoginSuccess = (adminInfo) => ({
@@ -282,19 +283,22 @@ export const fetchAllDetailDoctorStart = (data) => {
       let resPri = await getAllCodeApi("PRICE");
       let resPay = await getAllCodeApi("PAYMENT");
       let resPro = await getAllCodeApi("PROVINCE");
-
+      let resSpe = await getAllSpecialtyApi();
       if (
         resPri &&
         resPri.errCode === 0 &&
         resPay &&
         resPay.errCode === 0 &&
         resPro &&
-        resPro.errCode === 0
+        resPro.errCode === 0 &&
+        resSpe &&
+        resSpe.errCode === 0
       ) {
         let data = {
           resPri: resPri.data,
           resPay: resPay.data,
           resPro: resPro.data,
+          resSpe: resSpe.data,
         };
         dispatch(fetchAllDetailDoctorSuccess(data));
       } else {

@@ -59,16 +59,22 @@ const getAllSpecialtyApi = () => {
 const getDetailSpecialtyByIdApi = (id) => {
   return axios.get(`/api/get-detail-specialty-by-id?id=${id}`);
 };
+const postCreateClinicApi = (data) => {
+  return axios.post(`/api/create-clinic`, data);
+};
+const getAllClinicApi = () => {
+  return axios.get(`/api/get-all-clinic`);
+};
+const getDetailClinicByIdApi = (id) => {
+  return axios.get(`/api/get-detail-clinic-by-id?id=${id}`);
+};
 
 export {
-  getDetailSpecialtyByIdApi,
-  getAllSpecialtyApi,
   handleLoginApi,
   postBookAppointmentApi,
   getAllUserApi,
   createNewUserApi,
   editUserApi,
-  
   deleteUserApi,
   getAllCodeApi,
   getTopDoctorHomeApi,
@@ -80,5 +86,10 @@ export {
   getExtraDoctorInfoByIdApi,
   getProfileDoctorByIdApi,
   postVerifyBookingApi,
+  postCreateClinicApi,
+  getDetailClinicByIdApi,
+  getAllClinicApi,
   postCreateSpecialtyApi,
+  getDetailSpecialtyByIdApi,
+  getAllSpecialtyApi,
 };

@@ -1,19 +1,25 @@
-.detail-doctor-container {
-  .detail-doctor-body {
-    .intro-dr {
+.detail-des-container {
+  .detail-des-body {
+    .intro-des {
       display: flex;
       padding: 20px 150px;
-
-      height: 130px;
-      .content-left-dr {
-        background: center center no-repeat;
-        background-size: contain;
-        border-radius: 50%;
-        width: 15%;
-      }
-      .content-right-dr {
-        width: 55%;
-        .name-dr {
+      height: 395px;
+      width: 100%;
+      background: center center no-repeat;
+      background-size: cover;
+      .content-right-des {
+        margin-right: auto;
+        box-shadow: 0px 1px 6px rgba(32, 33, 36, 0.28);
+        margin-left: auto;
+        width: 1200px;
+        height: 180px;
+        margin-top: 220px;
+        padding-top: 20px;
+        padding: 50px;
+        flex-direction: row;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        .name-des {
           font-size: 26px;
           margin-bottom: 7px;
           line-height: 32px;
@@ -21,7 +27,7 @@
           color: #000000;
           font-family: 14px/1.5 "Montserrat", sans-serif;
         }
-        .specialty-dr {
+        .specialty-des {
           color: #555;
           font-size: 14px;
           font-weight: 400;
@@ -30,22 +36,9 @@
         }
       }
     }
-    .schedule-dr {
+    .detail-des {
       padding: 20px 150px;
-      height: 300px;
-      display: flex;
-      .content-left {
-        width: 50%;
-      }
-      .content-right {
-        width: 50%;
-        border-left-style: double;
-        padding: 20px;
-      }
-    }
-    .detail-dr {
-      background-color: #f5f5f5;
-      padding: 20px 150px;
+      margin-top: 50px;
 
       h3 {
         font-size: 17px;
@@ -54,20 +47,21 @@
         width: 100%;
       }
     }
-    .cmt-dr {
+    .cmt-des {
       padding: 20px 150px;
+      background-color: #f5f5f5;
 
       height: 300px;
-      .cmt-dr-title {
+      .cmt-des-title {
         font-size: 17px;
         font-weight: bold;
         margin-bottom: 10px;
       }
-      .cmt-dr-content {
+      .cmt-des-content {
         font-size: 14px;
         margin-bottom: 10px;
       }
-      .cmt-dr-time {
+      .cmt-des-time {
         font-size: 14px;
         color: #555;
       }

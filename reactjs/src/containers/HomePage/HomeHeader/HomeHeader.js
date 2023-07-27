@@ -40,7 +40,7 @@ class HomeHeader extends Component {
               <div className="child-content">
                 <div>
                   <b>
-                    <FormattedMessage id="homeHeader.heatlh-facility" />
+                    <FormattedMessage id="homeHeader.heatlh-clinic" />
                   </b>
                 </div>
                 <div className="subs-title">

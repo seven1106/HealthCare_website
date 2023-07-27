@@ -6,6 +6,7 @@ export const path = {
   SYSTEM: "/system",
   DETAIL_DOCTOR: "/detail-doctor/:id",
   DETAIL_SPECIALTY: "/detail-specialty/:id",
+  DETAIL_CLINIC: "/detail-clinic/:id",
   VERIFY_BOOKING: "/verify-booking",
 };
 
@@ -18,7 +19,6 @@ export const USER_ROLE = {
   DOCTOR: "R2",
   PATIENT: "R3",
 };
-
 
 export const manageActions = {
   ADD: "ADD",

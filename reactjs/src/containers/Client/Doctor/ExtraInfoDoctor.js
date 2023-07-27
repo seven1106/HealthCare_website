@@ -14,7 +14,13 @@ class ExtraInfoDoctor extends Component {
       extraInfo: {},
     };
   }
-  async componentDidMount() {}
+  async componentDidMount() {
+    let res = await getExtraDoctorInfoByIdApi(this.props.doctorId);
+    if (res && res.errCode === 0) {
+      this.setState({
+        extraInfo: res.data,
+      });
+  }}
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.doctorId !== prevProps.doctorId) {
@@ -43,7 +49,7 @@ class ExtraInfoDoctor extends Component {
               <FormattedMessage id="extra-info.adress" />
             </div>
             <div className="name-clinic">
-              {extraInfo && extraInfo.clinicName ? extraInfo.nameClinic : ""}
+              {extraInfo && extraInfo.nameClinic ? extraInfo.nameClinic : ""}
             </div>
             <div className="address-clinic">
               {extraInfo && extraInfo.addressClinic
@@ -54,44 +60,47 @@ class ExtraInfoDoctor extends Component {
           <div className="content-down">
             {isShowDetail === false && (
               <div className="short-info">
-                    <span className="left">
-                      <FormattedMessage id="extra-info.price" />
-                    </span>
-                    <span className="right">
-                {extraInfo &&
-                extraInfo.priceData &&
-                language === languages.VI ? (
-                  <NumberFormat
-                    value={extraInfo.priceData.value_vi}
-                    className="currency"
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    suffix=" VND"
-                  />
-                ) : (
-                  ""
-                )}
-                {extraInfo &&
-                extraInfo.priceData &&
-                language === languages.EN ? (
-                  <NumberFormat
-                    value={extraInfo.priceData.value_en}
-                    className="currency"
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    suffix=" USD"
-                  />
-                ) : (
-                  ""
-                    )}</span>
-                <span className="show" onClick={() => this.showHideDetail(true)}>
+                <span className="left">
+                  <FormattedMessage id="extra-info.price" />
+                </span>
+                <span className="right">
+                  {extraInfo &&
+                  extraInfo.priceData &&
+                  language === languages.VI ? (
+                    <NumberFormat
+                      value={extraInfo.priceData.value_vi}
+                      className="currency"
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      suffix=" VND"
+                    />
+                  ) : (
+                    ""
+                  )}
+                  {extraInfo &&
+                  extraInfo.priceData &&
+                  language === languages.EN ? (
+                    <NumberFormat
+                      value={extraInfo.priceData.value_en}
+                      className="currency"
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      suffix=" USD"
+                    />
+                  ) : (
+                    ""
+                  )}
+                </span>
+                <span
+                  className="show"
+                  onClick={() => this.showHideDetail(true)}
+                >
                   <FormattedMessage id="extra-info.show" />
                 </span>
               </div>
             )}
             {isShowDetail === true && (
               <>
-                
                 <div className="detail-info">
                   <div className="price">
                     <span className="left">
@@ -130,19 +139,19 @@ class ExtraInfoDoctor extends Component {
                     {extraInfo && extraInfo.note ? extraInfo.note : ""}
                   </div>
                   <div className="payment">
-                  <span className="left">
-                  <FormattedMessage id="extra-info.payment" />
+                    <span className="left">
+                      <FormattedMessage id="extra-info.payment" />
                     </span>
                     <span className="right">
-                    {extraInfo &&
-                    extraInfo.paymentData &&
-                    language === languages.VI
-                      ? extraInfo.paymentData.value_vi
-                      : ""}
-                    {extraInfo &&
-                    extraInfo.paymentData &&
-                    language === languages.EN
-                      ? extraInfo.paymentData.value_en
+                      {extraInfo &&
+                      extraInfo.paymentData &&
+                      language === languages.VI
+                        ? extraInfo.paymentData.value_vi
+                        : ""}
+                      {extraInfo &&
+                      extraInfo.paymentData &&
+                      language === languages.EN
+                        ? extraInfo.paymentData.value_en
                         : ""}
                     </span>
                   </div>

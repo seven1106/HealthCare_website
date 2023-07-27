@@ -4,13 +4,18 @@
   height: 130px;
   .content-left-dr {
     background: center center no-repeat;
-    background-size: contain;
+    background-size: cover;
     border-radius: 50%;
     width: 15%;
   }
   .content-right-dr {
     width: 75%;
     .name-dr {
+      &:hover {
+        cursor: pointer;
+
+        color: #f7d800;
+      }
       font-size: 20px;
       margin-bottom: 7px;
       line-height: 32px;

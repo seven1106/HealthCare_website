@@ -49,11 +49,6 @@ class TableManageUser extends Component {
 
     return (
       <React.Fragment>
-        {/* <MdEditor
-          style={{ height: "500px" }}
-          renderHTML={(text) => mdParser.render(text)}
-          onChange={handleEditorChange}
-        /> */}
         <div className="user-container">
           <table id="table-customers">
             <tr>

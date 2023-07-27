@@ -99,25 +99,25 @@ let createNewUser = (user) => {
           errMessage:
             "Your's Email already exist in your system. Please try other email!",
         });
+      } else {
+        let hashPasswordFromBcrypt = await hashUserPassword(user.password);
+        await db.User.create({
+          email: user.email,
+          password: hashPasswordFromBcrypt,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          address: user.address,
+          gender: user.gender,
+          phoneNumber: user.phoneNumber,
+          roleId: user.roleId,
+          position: user.position,
+          image: user.avatar,
+        });
+        resolve({
+          errCode: 0,
+          message: "Create new user success",
+        });
       }
-      let hashPasswordFromBcrypt = await hashUserPassword(user.password);
-      await db.User.create({
-        email: user.email,
-        password: hashPasswordFromBcrypt,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        address: user.address,
-        gender: user.gender,
-        phoneNumber: user.phoneNumber,
-        roleId: user.roleId,
-        position: user.position,
-        image: user.avatar,
-
-      });
-      resolve({
-        errCode: 0,
-        message: "Create new user success",
-      });
     } catch (error) {
       reject(error);
     }

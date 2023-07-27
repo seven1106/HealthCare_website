@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./SpecialtyManage.scss";
+import "./ClinicManage.scss";
 import * as actions from "../../../store/actions";
 import { CRUD_ACTIONS, CommonUtils } from "../../../utils";
-import { postCreateSpecialtyApi } from "../../../services/userService";
+import { postCreateClinicApi } from "../../../services/userService";
 
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
@@ -18,16 +18,18 @@ import { toast } from "react-toastify";
 // Initialize a markdown parser
 const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-class SpecialtyManage extends Component {
+class ClinicManage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       //markdown
       contentMarkdown: "",
       contentHTML: "",
-      nameSpecialty: "",
+      nameClinic: "",
+      address: "",
       ImageBase64: "",
-      imageSpecialty: "",
+      imageClinic: "",
+      description: "",
     };
   }
   componentDidMount() {}
@@ -39,31 +41,48 @@ class SpecialtyManage extends Component {
       contentHTML: html,
     });
   };
-  handleSaveSpecialty = async () => {
-    let { contentMarkdown, contentHTML, nameSpecialty, ImageBase64 } =
-      this.state;
-    if (!contentMarkdown || !contentHTML || !nameSpecialty || !ImageBase64) {
+  handleSaveClinic = async () => {
+    let {
+      contentMarkdown,
+      contentHTML,
+      nameClinic,
+      ImageBase64,
+      description,
+      address,
+    } = this.state;
+    if (
+      !contentMarkdown ||
+      !contentHTML ||
+      !nameClinic ||
+      !ImageBase64 ||
+      !description ||
+      !address
+    ) {
       toast.error("Please do not leave blank");
       return;
     }
 
-    let res = await postCreateSpecialtyApi({
-      image: this.state.imageSpecialty,
-      descriptionHTML: this.state.contentHTML,
-      descriptionMarkdown: this.state.contentMarkdown,
-      nameSpecialty: this.state.nameSpecialty,
+    let res = await postCreateClinicApi({
+      image: this.state.imageClinic,
+      contentHTML: this.state.contentHTML,
+      contentMarkdown: this.state.contentMarkdown,
+      nameClinic: this.state.nameClinic,
+      address: this.state.address,
+      description: this.state.description,
     });
     if (res && res.errCode === 0) {
-      toast.success("Save specialty success");
+      toast.success("Save clinic success");
       this.setState({
         contentMarkdown: "",
         contentHTML: " ",
-        nameSpecialty: " ",
+        nameClinic: " ",
         ImageBase64: "",
-        imageSpecialty: "",
+        imageClinic: "",
+        description: "",
+        address: "",
       });
     } else {
-      toast.error("Save specialty failed");
+      toast.error("Save clinic failed");
     }
   };
   handleOnChange = (e, id) => {
@@ -81,30 +100,54 @@ class SpecialtyManage extends Component {
       let objUrl = URL.createObjectURL(file);
       this.setState({
         ImageBase64: objUrl,
-        imageSpecialty: base64,
+        imageClinic: base64,
       });
     }
   };
+
   render() {
-    console.log("this.specialty ", this.state);
+    console.log(this.state);
     return (
       <React.Fragment>
-        <div className="specialtyManage-container px-2">
-          <div className="title my-5">MANAGE SPECIALTY</div>
-          <div className="specialtyManage-body">
-            <div className="row my-5 px-5">
-              <div className="col-6 my-2 form-group">
-                <label className="label">Specialty name:</label>
+        <div className="clinicManage-container px-2">
+          <div className="title my-5">MANAGE CLINIC</div>
+          <div className="clinicManage-body px-5">
+            <div className="row ">
+              <div className="col-6 form-group">
+                <label className="label">Clinic name:</label>
                 <input
                   className="form-control"
                   onChange={(e) => {
-                    this.handleOnChange(e, "nameSpecialty");
+                    this.handleOnChange(e, "nameClinic");
                   }}
                 />
               </div>
-              <div class="col-6 form-group">
+              <div className="col-6 form-group">
+                <label className="label">Address:</label>
+                <input
+                  className="form-control"
+                  onChange={(e) => {
+                    this.handleOnChange(e, "address");
+                  }}
+                />
+              </div>
+            </div>
+            <div className="row my-5 ">
+              <div className="description col-6 form-group">
+                <label className="label">Description:</label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="8"
+                  value={this.state.description}
+                  onChange={(e) => {
+                    this.handleOnChange(e, "description");
+                  }}
+                />
+              </div>
+              <div class="img col-6 form-group">
                 <label for="validationCustom" class="form-label">
-                  Image
+                  Image:
                 </label>
                 <input
                   class="form-control"
@@ -128,8 +171,8 @@ class SpecialtyManage extends Component {
                 <div class="invalid-feedback">Please provide a valid.</div>
               </div>
             </div>
-            <div className="col-12 px-5 specialtyManage-editor">
-            <label for="validationCustom" class="form-label">
+            <div className="col-12  clinicManage-editor">
+              <label for="validationCustom" class="form-label">
                 Content:
               </label>
               <MdEditor
@@ -145,10 +188,7 @@ class SpecialtyManage extends Component {
           className="add-new "
           style={{ float: "right", margin: "0px 50px", padding: "30px" }}
         >
-          <button
-            className="btn px-3"
-            onClick={() => this.handleSaveSpecialty()}
-          >
+          <button className="btn px-3" onClick={() => this.handleSaveClinic()}>
             <span> Save changes</span>
           </button>
         </div>
@@ -172,4 +212,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpecialtyManage);
+export default connect(mapStateToProps, mapDispatchToProps)(ClinicManage);

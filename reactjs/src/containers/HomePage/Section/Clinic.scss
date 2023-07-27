@@ -1,22 +1,23 @@
-.specialty {
+.clinic {
   .section-item {
     padding: 5px;
 
-    .specialty-border {
-      .specialty-img {
+    .clinic-border {
+      .clinic-img {
         display: flex;
       }
 
       &:hover {
         cursor: pointer;
-        .specialty-title {
+        .clinic-title {
           color: #f7d800;
         }
       }
-      .specialty-title {
+      .clinic-title {
         font-size: 16px;
-        margin-top: 7px;
         font-weight: 400;
+        margin-top: 7px;
+
         color: #111;
       }
       .spec-title {

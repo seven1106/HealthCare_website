@@ -132,7 +132,6 @@ class BookingModal extends Component {
     if (!_.isEmpty(this.props.data)) {
       doctorId = this.props.data.doctorId;
     }
-    console.log("props", this.props);
     return (
       console.log(this.state),
       (
@@ -164,7 +163,7 @@ class BookingModal extends Component {
                     dataTime={this.props.data}
                   />
                 </div>
-                <div className="row">
+                <div className="row mt-5">
                   <div className="col-6">
                     <div className="form-group">
                       <label htmlFor="exampleInputEmail1">Email</label>

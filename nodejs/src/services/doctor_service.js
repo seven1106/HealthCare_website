@@ -1,3 +1,4 @@
+import e from "express";
 import db from "../models";
 import _ from "lodash";
 require("dotenv").config();
@@ -78,6 +79,8 @@ let saveDetailInforDoctor = (infor) => {
         detailDoctor.nameClinic = infor.nameClinic;
         detailDoctor.addressClinic = infor.addressClinic;
         detailDoctor.note = infor.note;
+        detailDoctor.specialtyId = infor.specialtyId;
+        detailDoctor.clinicId = infor.clinicId;
         await detailDoctor.save();
 
         resolve({
@@ -93,6 +96,8 @@ let saveDetailInforDoctor = (infor) => {
           addressClinic: infor.addressClinic,
           doctorId: infor.doctorId,
           note: infor.note,
+          specialtyId: infor.selectedSpe,
+          clinicId: infor.selectedSpe,
         });
         resolve({
           errCode: 0,
@@ -284,36 +289,45 @@ let getExtraDoctorInfoById = (id) => {
           errMessage: "Missing required parameter",
         });
       } else {
-        let data = await db.detailDoctor.findOne({
-          where: { doctorId: id },
-          attributes: {
-            exclude: ["password"],
-          },
-          include: [
-            {
-              model: db.allCode,
-              as: "priceData",
-              attributes: ["value_en", "value_vi"],
+        if (id === "ALL") {
+          let data = await db.detailDoctor.findAll({});
+          if (!data) data = [];
+          resolve({
+            errCode: 0,
+            data: data,
+          });
+        } else {
+          let data = await db.detailDoctor.findOne({
+            where: { doctorId: id },
+            attributes: {
+              exclude: ["password"],
             },
-            {
-              model: db.allCode,
-              as: "paymentData",
-              attributes: ["value_en", "value_vi"],
-            },
-            {
-              model: db.allCode,
-              as: "provinceData",
-              attributes: ["value_en", "value_vi"],
-            },
-          ],
-          raw: false,
-          nest: true,
-        });
-        if (!data) data = {};
-        resolve({
-          errCode: 0,
-          data: data,
-        });
+            include: [
+              {
+                model: db.allCode,
+                as: "priceData",
+                attributes: ["value_en", "value_vi"],
+              },
+              {
+                model: db.allCode,
+                as: "paymentData",
+                attributes: ["value_en", "value_vi"],
+              },
+              {
+                model: db.allCode,
+                as: "provinceData",
+                attributes: ["value_en", "value_vi"],
+              },
+            ],
+            raw: false,
+            nest: true,
+          });
+          if (!data) data = {};
+          resolve({
+            errCode: 0,
+            data: data,
+          });
+        }
       }
     } catch (e) {
       reject(e);
