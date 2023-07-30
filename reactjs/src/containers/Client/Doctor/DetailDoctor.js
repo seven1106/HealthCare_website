@@ -7,7 +7,8 @@ import { getDetailInforDoctorApi } from "../../../services/userService";
 import HomeFooter from "../../HomePage/Section/HomeFooter";
 import DoctorSchedule from "./DoctorSchedule";
 import ExtraInfoDoctor from "./ExtraInfoDoctor";
-
+import LikeAndShare from "./Social/LikeAndShare";
+import Comment from "./Social/Comment";
 class DetailDoctor extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +39,7 @@ class DetailDoctor extends Component {
       vi = `${detailDoctor.positionData.value_vi} ${detailDoctor.firstName} ${detailDoctor.lastName}`;
       en = `${detailDoctor.positionData.value_en} ${detailDoctor.firstName} ${detailDoctor.lastName}`;
     }
+    let currentURL =process.env.REACT_APP_IS_LOCALHOST === "true" ? window.location.href : window.location.origin + window.location.pathname;
 
     return (
       <>
@@ -65,6 +67,11 @@ class DetailDoctor extends Component {
                     detailDoctor.markdown.description && (
                       <span>{detailDoctor.markdown.description}</span>
                     )}
+                </div>
+                <div className="like-share-dr pt-2">
+                  <LikeAndShare
+                    dataHref={currentURL}
+                  />
                 </div>
               </div>
             </div>
@@ -101,7 +108,12 @@ class DetailDoctor extends Component {
                   ></div>
                 )}
             </div>
-            <div className="cmt-dr">zxc</div>
+            <div className="cmt-dr">
+              <Comment
+                dataHref={currentURL}
+                width="100%"
+              />
+            </div>
           </div>
         </div>
         <HomeFooter />

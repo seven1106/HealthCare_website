@@ -29,22 +29,21 @@ let postBookAppointment = (data) => {
           defaults: {
             email: data.email,
             roleId: "R3",
+            firstName: data.fullName,
+            address: data.address,
+            gender:data.selectedGender,
           },
         });
         console.log("check use", user);
         if (user && user[0]) {
-          await db.booking.findOrCreate({
-            where: {
-              clientId: user[0].id,
-            },
-            defaults: {
+          await db.booking.create({
+           
               statusId: "S1",
               doctorId: data.doctorId,
               date: data.date,
               timeType: data.timeType,
               clientId: user[0].id,
               token: token,
-            },
           });
           resolve({
             errCode: 0,

@@ -68,8 +68,18 @@ const getAllClinicApi = () => {
 const getDetailClinicByIdApi = (id) => {
   return axios.get(`/api/get-detail-clinic-by-id?id=${id}`);
 };
+const getAppointmentByDateApi = (doctorId, date) => {
+  return axios.get(
+    `/api/get-appointment-by-date?doctorId=${doctorId}&date=${date}`
+  );
+};
+const completeAppointmentApi = (data, type) => {
+  return axios.post(`/api/completed-appointment`, { data: data, type: type });
+};
 
 export {
+  completeAppointmentApi,
+  getAppointmentByDateApi,
   handleLoginApi,
   postBookAppointmentApi,
   getAllUserApi,

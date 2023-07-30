@@ -11,7 +11,6 @@ import {
 import ModalUser from "./ModalUser";
 import ModalDeleteUser from "./ModalDeleteUser";
 
-import CustomScrollbars from "../../components/CustomScrollbars";
 class UserManage extends Component {
   constructor(props) {
     super(props);
@@ -99,7 +98,6 @@ class UserManage extends Component {
   render() {
     let listUsers = this.state.listUsers;
     return (
-      <CustomScrollbars style={{ height: "100vh", wight: "100%" }}>
         <div className="user-container">
           <ModalUser
             isOpen={this.state.isOpenModal}
@@ -159,7 +157,7 @@ class UserManage extends Component {
                       <td>{item.firstName}</td>
                       <td>{item.lastName}</td>
                       <td>{item.address}</td>
-                      <td className="btn">
+                      <td className="action">
                         <button className="btn-edit">
                           <i className="fas fa-pencil-alt"></i>
                         </button>
@@ -176,7 +174,6 @@ class UserManage extends Component {
             </table>
           </div>
         </div>
-      </CustomScrollbars>
     );
   }
 }

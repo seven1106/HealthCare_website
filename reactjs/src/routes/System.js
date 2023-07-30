@@ -8,7 +8,7 @@ import Header from "../containers/Header/Header";
 import ScheduleManage from "../containers/System/Doctor/ScheduleManage";
 import ClinicManage from "../containers/System/Clinic/ClinicManage";
 import SpecialtyManage from "../containers/System/Specialty/SpecialtyManage";
-
+import AppointmentManage from "../containers/System/Doctor/AppointmentManage";
 class System extends Component {
   render() {
     const { systemMenuPath } = this.props;
@@ -27,6 +27,7 @@ class System extends Component {
               />
               <Route path="/system/specialty" component={SpecialtyManage} />
               <Route path="/system/clinic" component={ClinicManage} />
+              <Route path="/system/appointment-manage" component={AppointmentManage} />
 
               <Route
                 component={() => {

@@ -13,12 +13,11 @@ export const adminMenu = [
 
       { name: "Doctor manage", link: "/system/doctor-manage" },
 
-
       { name: "Schedule manage", link: "/system/schedule-manage" },
 
       {
-        name: "menu.system.system-parameter.header",
-        link: "/system/system-parameter",
+        name: "Appointment manage",
+        link: "/system/appointment-manage",
       },
     ],
   },
@@ -59,7 +58,10 @@ export const doctorMenu = [
     name: "System",
     menus: [
       { name: "Schedule manage", link: "/system/schedule-manage" },
+      {
+        name: "Appointment manage",
+        link: "/system/appointment-manage",
+      },
     ],
   },
-
 ];

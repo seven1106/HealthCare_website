@@ -44,7 +44,7 @@ class Header extends Component {
         <div className="header-right">
           <div className="welcome">
             Welcome,{" "}
-            {userInfo && userInfo.firstName ? userInfo.firstName : "Unknown"}!
+            {userInfo && userInfo.lastName ? userInfo.lastName : "Unknown"}!
           </div>
           <div className="btn btn-logout" onClick={processLogout}>
             <i className="fas fa-sign-out-alt"></i>

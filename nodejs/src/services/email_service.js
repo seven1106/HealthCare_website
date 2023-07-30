@@ -46,4 +46,38 @@ let sendMailToClient = async (dataSend) => {
         `,
   });
 };
-module.exports = { sendMailToClient };
+let sendCompleteMailToClient = async (dataSend) => {
+  let transporter = nodeMailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.EMAIL_APP,
+      pass: process.env.EMAIL_APP_PASSWORD,
+    },
+  });
+  let info = await transporter.sendMail({
+    from: '"AMIGO HEALTHCARE" <process.env.EMAIL_APP>',
+    to: dataSend.receiverEmail,
+    subject: "Thông tin đặt lịch khám bệnh",
+    html: `
+        <h3>Xin chào ${dataSend.clientName} </h3>
+        <p> Bạn nhận được email này vì đã hoàn tất lịch hẹn khám bệnh. </p>
+        <p> Tóm tắt quá trình khám bệnh: ${dataSend.sum} </p>
+        <p> Kế hoạch điều trị: ${dataSend.plan} </p>
+        <p> Hướng dẫn về Thuốc: ${dataSend.medical} </p>
+        <p> Khuyến nghị về lối sống:: ${dataSend.lifeStyle} </p>
+        <p> lịch tái khám:: ${dataSend.appointments} </p>
+        `,
+    attachments: [
+      {
+        filename: `${dataSend.clientId}-${new Date().getTime()}.png`,
+        content: dataSend.imageBase64.split("base64,")[1],
+        encoding: "base64",
+      },
+    ],
+  });
+
+  return true;
+};
+module.exports = { sendMailToClient, sendCompleteMailToClient };

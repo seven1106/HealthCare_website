@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./ClinicManage.scss";
 import * as actions from "../../../store/actions";
-import { CRUD_ACTIONS, CommonUtils } from "../../../utils";
+import {  CommonUtils } from "../../../utils";
 import { postCreateClinicApi } from "../../../services/userService";
 
 import MarkdownIt from "markdown-it";
