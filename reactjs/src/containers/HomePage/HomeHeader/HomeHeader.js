@@ -14,7 +14,11 @@ class HomeHeader extends Component {
       this.props.history.push("/home");
     }
   };
-
+  handleLogin = () => {
+    if (this.props.history) {
+      this.props.history.push("/login");
+    }
+  };
   render() {
     let language = this.props.language;
 
@@ -23,8 +27,13 @@ class HomeHeader extends Component {
         <div className="homeHeader-container">
           <div className="homeHeader-content">
             <div className="left-content py-2">
-              <i className="fas fa-bars"></i>
-              <div className="header-logo" onClick={() =>this.returnHome()}></div>
+              <div className="login" onClick={() => this.handleLogin()}>
+                <i className="fas fa-sign-in-alt"></i>
+              </div>
+              <div
+                className="header-logo"
+                onClick={() => this.returnHome()}
+              ></div>
             </div>
             <div className="center-content">
               <div className="child-content">
@@ -70,8 +79,8 @@ class HomeHeader extends Component {
             </div>
             <div className="right-content">
               <div className="search">
-                <input type="text" placeholder="Search..." />
-                <button className="btn btn-outline-secondary" type="button">
+                <input type="text" placeholder="..." />
+                <button className="btn-search" type="button">
                   <i className="fas fa-search "></i>
                 </button>
               </div>

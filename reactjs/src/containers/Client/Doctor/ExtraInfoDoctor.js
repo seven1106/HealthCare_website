@@ -4,7 +4,7 @@ import { languages } from "../../../utils";
 import "./ExtraInfoDoctor.scss";
 import moment from "moment";
 import { getExtraDoctorInfoByIdApi } from "../../../services/userService";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from 'react-number-format';
 import { FormattedMessage } from "react-intl";
 class ExtraInfoDoctor extends Component {
   constructor(props) {
@@ -20,7 +20,8 @@ class ExtraInfoDoctor extends Component {
       this.setState({
         extraInfo: res.data,
       });
-  }}
+    }
+  }
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.doctorId !== prevProps.doctorId) {
@@ -67,7 +68,7 @@ class ExtraInfoDoctor extends Component {
                   {extraInfo &&
                   extraInfo.priceData &&
                   language === languages.VI ? (
-                    <NumberFormat
+                    <NumericFormat
                       value={extraInfo.priceData.value_vi}
                       className="currency"
                       displayType={"text"}
@@ -80,7 +81,7 @@ class ExtraInfoDoctor extends Component {
                   {extraInfo &&
                   extraInfo.priceData &&
                   language === languages.EN ? (
-                    <NumberFormat
+                    <NumericFormat
                       value={extraInfo.priceData.value_en}
                       className="currency"
                       displayType={"text"}
@@ -110,7 +111,7 @@ class ExtraInfoDoctor extends Component {
                       {extraInfo &&
                       extraInfo.priceData &&
                       language === languages.VI ? (
-                        <NumberFormat
+                        <NumericFormat
                           value={extraInfo.priceData.value_vi}
                           className="currency"
                           displayType={"text"}
@@ -123,7 +124,7 @@ class ExtraInfoDoctor extends Component {
                       {extraInfo &&
                       extraInfo.priceData &&
                       language === languages.EN ? (
-                        <NumberFormat
+                        <NumericFormat
                           value={extraInfo.priceData.value_en}
                           className="currency"
                           displayType={"text"}

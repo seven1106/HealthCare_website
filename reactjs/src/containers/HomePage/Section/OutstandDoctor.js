@@ -35,6 +35,7 @@ class OutstandDoctor extends Component {
     this.props.history.push(`/detail-doctor/${item.id}`);
   };
 
+
   render() {
     console.log("this.props.listDoctor", this.props.listDoctor);
     let arrDoctor = this.state.arrDoctor;

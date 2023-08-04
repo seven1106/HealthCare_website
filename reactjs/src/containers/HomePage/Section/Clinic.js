@@ -47,7 +47,9 @@ class Clinic extends Component {
       <div className="section-share clinic">
         <div className="section-container">
           <div className="section-header">
-            <span className="section-title">Chuyên khoa phổ biến</span>
+            <span className="section-title">
+              <FormattedMessage id="clinic" />
+            </span>
             <button className="section-button">
               <FormattedMessage id="homepage.see-more" />
             </button>

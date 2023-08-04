@@ -11,7 +11,7 @@ class Comment extends Component {
   initFacebookSDK = () => {
     // wait for facebook sdk to initialize before starting the react app
     if (window.FB) {
-      window.FB.parse();
+      window.FB.XFBML.parse();
     }
 
     window.fbAsyncInit = function () {
@@ -42,15 +42,14 @@ class Comment extends Component {
     if (this.state.language !== prevState.language) {
     }
   }
-    render() {
-      let { width, dataHref, dataNumposts  } = this.props;
+  render() {
+    let { width, dataHref, dataNumposts } = this.props;
     return (
-        <>
-            
+      <>
         <div
           class="fb-comments"
-        //   data-href= {dataHref ? dataHref : "https://developers.facebook.com/docs/plugins/comments#configurator"}
-          data-href= "https://developers.facebook.com/docs/plugins/comments#configurator"
+          data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+          // data-href="window.location.origin + window.location.pathname"
           data-width={width ? width : "100%"}
           data-numposts={dataNumposts ? dataNumposts : 5}
         ></div>

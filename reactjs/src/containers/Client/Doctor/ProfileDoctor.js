@@ -4,7 +4,8 @@ import { FormattedMessage } from "react-intl";
 import "./ProfileDoctor.scss";
 import { languages } from "../../../utils";
 import { getDetailInforDoctorApi } from "../../../services/userService";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from "react-number-format";
+
 import _ from "lodash";
 import moment from "moment";
 import { withRouter } from "react-router-dom/cjs/react-router-dom";
@@ -60,7 +61,7 @@ class ProfileDoctor extends Component {
                 {this.state.dataProFile &&
                 this.state.dataProFile.detailDoctor &&
                 language === languages.VI ? (
-                  <NumberFormat
+                  <NumericFormat
                     value={
                       this.state.dataProFile.detailDoctor.priceData.value_vi
                     }
@@ -75,7 +76,7 @@ class ProfileDoctor extends Component {
                 {this.state.dataProFile &&
                 this.state.dataProFile.detailDoctor &&
                 language === languages.EN ? (
-                  <NumberFormat
+                  <NumericFormat
                     value={
                       this.state.dataProFile.detailDoctor.priceData.value_en
                     }
@@ -143,8 +144,10 @@ class ProfileDoctor extends Component {
               }}
             ></div>
             <div className="content-right-dr">
-              
-              <div className="name-dr" onClick={() => this.handleViewDetailDoctor(this.props.doctorId)}>
+              <div
+                className="name-dr"
+                onClick={() => this.handleViewDetailDoctor(this.props.doctorId)}
+              >
                 {language === languages.VI ? nameVi : nameEn}
               </div>
               <div className="specialty-dr">

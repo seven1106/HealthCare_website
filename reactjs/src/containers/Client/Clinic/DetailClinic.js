@@ -5,7 +5,8 @@ import { languages } from "../../../utils";
 import "./DetailClinic.scss";
 import { getDetailClinicByIdApi } from "../../../services/userService";
 import HomeFooter from "../../HomePage/Section/HomeFooter";
-
+import LikeAndShare from "../Doctor/Social/LikeAndShare";
+import Comment from "../Doctor/Social/Comment";
 class DetailClinic extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +53,9 @@ class DetailClinic extends Component {
               }}
             >
               <div className="content-right-des">
-                <div className="name-des">{name}</div>
+                <div className="name-des pb-3">{name}</div>
+              <LikeAndShare />
+
                 <div className="specialty-des">
                   {
                     DetailClinic &&
@@ -71,7 +74,7 @@ class DetailClinic extends Component {
                 ></div>
               )}
             </div>
-            <div className="cmt-des">zxc</div>
+            <div className="cmt-des"><Comment/></div>
           </div>
         </div>
         <HomeFooter />

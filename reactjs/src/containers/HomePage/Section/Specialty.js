@@ -47,7 +47,10 @@ class Specialty extends Component {
       <div className="section-share specialty">
         <div className="section-container">
           <div className="section-header">
-            <span className="section-title">Chuyên khoa phổ biến</span>
+            <span className="section-title">
+              {" "}
+              <FormattedMessage id="specialty" />
+            </span>
             <button className="section-button">
               <FormattedMessage id="homepage.see-more" />
             </button>
@@ -100,4 +103,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Specialty));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Specialty)
+);

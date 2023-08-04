@@ -1,7 +1,9 @@
 {
+  "search": "Tìm kiếm",
   "verifyBookingSuccess": "Xác nhận đặt lịch thành công",
   "verifyBookingFail": "Lịch hẹn không tồn tại hoặc đã được xác nhận",
-
+  "clinic": "Cơ sở y tế nổi bật",
+  "specialty": "Chuyên khoa phổ biến",
   "booking-modal": {
     "email-confirm": "Chúng tôi sẽ gửi một email để xác nhận, vui lòng nhập đúng email.",
     "reason": "Tình trạng sức khỏe",

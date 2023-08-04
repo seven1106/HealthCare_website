@@ -134,7 +134,6 @@ class DoctorManage extends Component {
       selectedPay: this.state.selectedPay.value,
       selectedPro: this.state.selectedPro.value,
       selectedSpe: this.state.selectedSpe.value,
-      selectedCli: this.state.selectedCli.value || "",
       addressClinic: this.state.addressClinic,
       nameClinic: this.state.nameClinic,
       note: this.state.note,

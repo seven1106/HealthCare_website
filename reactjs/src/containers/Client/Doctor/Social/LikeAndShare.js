@@ -11,7 +11,7 @@ class LikeAndShare extends Component {
   initFacebookSDK = () => {
     // wait for facebook sdk to initialize before starting the react app
     if (window.FB) {
-      window.FB.parse();
+      window.FB.XFBML.parse();
     }
 
     window.fbAsyncInit = function () {
@@ -48,7 +48,7 @@ class LikeAndShare extends Component {
         <div
           class="fb-like"
           //   data-href= {this.props.dataHref ? this.props.dataHref : "https://developers.facebook.com/docs/plugins/comments#configurator"}
-          data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+          data-href="window.location.origin + window.location.pathname"
           data-layout="standard"
           data-action="like"
           data-size="small"

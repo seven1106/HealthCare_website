@@ -10,7 +10,14 @@ let handleUserLogin = async (email, password) => {
       if (isExist) {
         // User already exist
         let user = await db.User.findOne({
-          attributes: ["id","email", "roleId", "password", "firstName", "lastName"],
+          attributes: [
+            "id",
+            "email",
+            "roleId",
+            "password",
+            "firstName",
+            "lastName",
+          ],
           where: { email: email },
           raw: true,
         });
@@ -30,7 +37,7 @@ let handleUserLogin = async (email, password) => {
       } else {
         // User not exist
         userData.errCode = 2;
-        userData.errMessage = `Your's Email isn't exist in your system. Please try other email!`;
+        userData.errMessage = `Your's Email isn't exist in our system. Please try other email!`;
       }
       resolve(userData);
     } catch (e) {

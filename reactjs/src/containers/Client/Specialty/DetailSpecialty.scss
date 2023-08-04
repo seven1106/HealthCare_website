@@ -38,21 +38,20 @@
       padding: 20px 150px;
     }
     .detail-spec {
-      background-color: #fff;
-
+      background-color: #f5f5f5;
       padding: 20px 150px;
 
       .doctor-content {
         display: flex;
         padding: 20px;
         background-color: #fff;
+
         box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
         border-radius: 8px;
         border-bottom: none;
         margin-bottom: 10px;
         .content-left {
           width: 50%;
-         
         }
         .content-right {
           width: 50%;
@@ -70,21 +69,7 @@
       }
     }
     .cmt-spec {
-      height: 300px;
-      width: 100%;
-      .cmt-spec-title {
-        font-size: 17px;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-      .cmt-spec-content {
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-      .cmt-spec-time {
-        font-size: 14px;
-        color: #555;
-      }
+      padding: 20px 150px;
     }
   }
 }

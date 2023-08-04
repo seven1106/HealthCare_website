@@ -58,6 +58,11 @@
       }
     }
     .right-content {
+      .btn-search {
+        border: none;
+        outline: none;
+        background-color: #45b65a;
+      }
       width: 35%;
       display: flex;
       justify-content: space-between;
@@ -152,20 +157,20 @@
     margin-bottom: 100px;
     height: 50%;
     .banner-content1 {
-      margin-top: 100px; /* Tăng khoảng cách giữa banner và header */
-      color: #da641e;
+      margin-top: 100px;
+      color: #ffffff;
       font-family: SVN-poppins;
-      font-size: 48px; /* Tăng kích thước font chữ */
-      font-weight: 700; /* Tăng độ đậm của font chữ */
+      font-size: 46px; /* Tăng kích thước font chữ */
+      font-weight: 700;
       text-align: center;
-      text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3); /* Tăng hiệu ứng bóng đổ */
+      text-shadow: 2px 4px 6px #333;
     }
 
     .banner-content2 {
-      font-size: 36px; /* Giảm kích thước font chữ */
-      font-weight: 500; /* Giảm độ đậm của font chữ */
-      color: #45b65a;
-      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2); /* Tăng hiệu ứng bóng đổ nhẹ */
+      font-size: 34px;
+      font-weight: 500;
+      color: #ffffff;
+      text-shadow: 2px 4px 6px #333;
       text-align: center;
     }
   }

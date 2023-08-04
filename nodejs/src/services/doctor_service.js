@@ -27,6 +27,8 @@ let getTopDoctorHome = (limitInput) => {
             attributes: ["value_en", "value_vi"],
           },
         ],
+        raw: true,
+        nest: true,
       });
       resolve({
         errCode: 0,
@@ -57,6 +59,8 @@ let getAllDoctors = () => {
             attributes: ["value_en", "value_vi"],
           },
         ],
+        raw: true,
+        nest: true,
       });
       resolve({
         errCode: 0,
@@ -72,22 +76,17 @@ let saveDetailInforDoctor = (infor) => {
     try {
       let detailDoctor = await db.detailDoctor.findOne({
         where: { doctorId: infor.doctorId },
+        raw: false,
       });
       if (detailDoctor) {
-        detailDoctor.priceId = infor.selectedPri;
-        detailDoctor.paymentId = infor.selectedPay;
-        detailDoctor.provinceId = infor.selectedPro;
-        detailDoctor.nameClinic = infor.nameClinic;
-        detailDoctor.addressClinic = infor.addressClinic;
-        detailDoctor.note = infor.note;
-        detailDoctor.specialtyId = infor.specialtyId;
-        detailDoctor.clinicId = infor.clinicId;
-        await detailDoctor.save();
-
-        resolve({
-          errCode: 0,
-          message: "Update the doctor's infor success",
-        });
+        (detailDoctor.priceId = infor.selectedPri),
+          (detailDoctor.paymentId = infor.selectedPay),
+          (detailDoctor.provinceId = infor.selectedPro),
+          (detailDoctor.nameClinic = infor.nameClinic),
+          (detailDoctor.addressClinic = infor.addressClinic),
+          (detailDoctor.note = infor.note),
+          (detailDoctor.specialtyId = infor.specialtyId),
+          await detailDoctor.save();
       } else {
         await db.detailDoctor.create({
           priceId: infor.selectedPri,
@@ -100,26 +99,23 @@ let saveDetailInforDoctor = (infor) => {
           specialtyId: infor.selectedSpe,
           clinicId: infor.selectedSpe,
         });
-        resolve({
-          errCode: 0,
-          message: "Create the doctor's infor success",
-        });
       }
       let markdown = await db.markdown.findOne({
         where: { doctorId: infor.doctorId },
+        raw: false,
       });
 
       if (markdown) {
         //update
-        (contentHTML = infor.contentHTML),
-          (contentMarkdown = infor.contentMarkdown),
-          (description = infor.description),
-          (doctorId = infor.doctorId),
+        (markdown.contentHTML = infor.contentHTML),
+          (markdown.contentMarkdown = infor.contentMarkdown),
+          (markdown.description = infor.description),
+          (markdown.doctorId = infor.doctorId),
           await markdown.save();
 
         resolve({
           errCode: 0,
-          message: "Update the doctor's infor success",
+          message: "Update the markdown's infor success",
         });
       } else {
         //create

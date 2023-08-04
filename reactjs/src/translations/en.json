@@ -1,6 +1,9 @@
 {
+  "search": "Search...",
   "verifyBookingSuccess": "Confirmation of booking successful",
   "verifyBookingFail": "Appointment does not exist or has been confirmed",
+  "clinic": "Outstanding medical facility",
+  "specialty": "Popular specialties",
   "booking-modal": {
     "email-confirm": "We'll sent an email to confirm, please input correct email.",
     "reason": "Health status",
@@ -15,7 +18,6 @@
     "cancel": "Cancel",
     "book-schedule": "Booking schedule",
     "book-free": "Book an appointment for free"
-
   },
   "extra-info": {
     "hide": "Hide",

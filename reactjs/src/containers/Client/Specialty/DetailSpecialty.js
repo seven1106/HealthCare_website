@@ -12,6 +12,8 @@ import { FormattedMessage } from "react-intl";
 import DoctorSchedule from "../../Client/Doctor/DoctorSchedule";
 import ExtraInfoDoctor from "../../Client/Doctor/ExtraInfoDoctor";
 import ProfileDoctor from "../../Client/Doctor/ProfileDoctor";
+import LikeAndShare from "../Doctor/Social/LikeAndShare";
+import Comment from "../Doctor/Social/Comment";
 class DetailSpecialty extends Component {
   constructor(props) {
     super(props);
@@ -116,7 +118,9 @@ class DetailSpecialty extends Component {
                   );
                 })}
             </div>
-            <div className="cmt-spec">zxc</div>
+            <div className="cmt-spec">
+              <Comment />
+            </div>
           </div>
         </div>
         <HomeFooter />

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./ClinicManage.scss";
 import * as actions from "../../../store/actions";
-import {  CommonUtils } from "../../../utils";
+import { CommonUtils } from "../../../utils";
 import { postCreateClinicApi } from "../../../services/userService";
 
 import MarkdownIt from "markdown-it";
@@ -112,6 +112,7 @@ class ClinicManage extends Component {
         <div className="clinicManage-container px-2">
           <div className="title my-5">MANAGE CLINIC</div>
           <div className="clinicManage-body px-5">
+            
             <div className="row ">
               <div className="col-6 form-group">
                 <label className="label">Clinic name:</label>
