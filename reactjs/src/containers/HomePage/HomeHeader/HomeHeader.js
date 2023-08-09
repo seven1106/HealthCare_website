@@ -79,7 +79,7 @@ class HomeHeader extends Component {
             </div>
             <div className="right-content">
               <div className="search">
-                <input type="text" placeholder="..." />
+                <input type="text" placeholder="Tìm kiếm..." />
                 <button className="btn-search" type="button">
                   <i className="fas fa-search "></i>
                 </button>

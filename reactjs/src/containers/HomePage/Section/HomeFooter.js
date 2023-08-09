@@ -22,6 +22,7 @@ class HomeFooter extends Component {
               <img src={fb} alt="fb" />
             </a>
           </p>
+          <div className="px-3"> Dự án cá nhân.</div>
         </div>
       </div>
     );
