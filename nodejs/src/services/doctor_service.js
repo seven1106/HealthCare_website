@@ -422,7 +422,7 @@ let getAppointmentByDate = (doctorId, date) => {
                   {
                     model: db.allCode,
                     as: "genderData",
-                    attributes: ["value_en", "value_vi"],
+                    attributes: ["value_en"],
                   },
                 ],
               },
